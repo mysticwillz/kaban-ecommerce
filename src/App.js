@@ -1,6 +1,7 @@
 
 import React from "react"
 import {Routes, Route} from "react-router-dom"
+import Nav from "./Components/Nav";
 import Cart from "./Pages/Cart";
 import ForgotPassword from "./Pages/ForgotPassword";
 import Home from "./Pages/Home";
@@ -11,7 +12,7 @@ import Signup from "./Pages/Signup";
 function App() {
   return (
   <>
- 
+<Nav/>
  <Routes>
   <Route path="/" element={<Home />}/>
   <Route path="/login" element={<Login/>}/>
