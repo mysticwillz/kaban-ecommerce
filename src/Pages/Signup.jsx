@@ -1,5 +1,5 @@
 import React from 'react'
-import signup from "../assets/login.png"
+import signup from "../assets/signup.png"
 import {FcGoogle} from "react-icons/fc"
 import {BsFacebook} from "react-icons/bs"
 
@@ -48,7 +48,7 @@ function Signup() {
       </div>
 
       <div className="w-full md:w-[60%] lg:w-[50%]">
-        <img src={signup} alt="signup picture" className="w-full  "/>
+        <img src={signup} alt="signup logo" className="w-full  "/>
       </div>
     </section>
   )

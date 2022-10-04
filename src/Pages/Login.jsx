@@ -16,10 +16,10 @@ function Login() {
           </div>
           
           <div>
-          <label htmlFor="text" className='capitalize font-bold '>email address</label>
+          <label htmlFor="email" className='capitalize font-bold '>email address</label>
           </div>
           <div>
-          <input type="text" value="" placeholder='you@example.com' id="text" className='w-full  rounded shadow-sm bg-white p-[10px] focus:border-[#1e6091] '/>
+          <input type="text" value="" placeholder='you@example.com' id="email" className='w-full  rounded shadow-sm bg-white p-[10px] focus:border-[#1e6091] '/>
           </div>
 
           <div className="flex justify-between mt-3">
@@ -43,7 +43,7 @@ function Login() {
       </div>
 
       <div className="w-full md:w-[60%] lg:w-[50%]">
-        <img src={login} alt="Login picture" className="w-full  "/>
+        <img src={login} alt="Login logo" className="w-full  "/>
       </div>
     </section>
   )
