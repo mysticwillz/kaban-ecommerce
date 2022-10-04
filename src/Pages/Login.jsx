@@ -2,6 +2,8 @@ import React from 'react'
 import login from "../assets/login.png"
 import {FcGoogle} from "react-icons/fc"
 import {BsFacebook} from "react-icons/bs"
+import { Link } from "react-router-dom"
+import Signup from '../Pages/Signup.jsx'
 
 function Login() {
   return (
@@ -10,7 +12,7 @@ function Login() {
         <form className="w-full">
           <h2 className='font-bold text-[2rem] mb-2  '> Login </h2>
           <div className='text-sm'>
-            doesn't have an account yet? <span className="underline text-[blue] cursor-pointer hover:text-[red]">Sign up</span>
+            doesn't have an account yet? <span className="underline text-[blue] cursor-pointer hover:text-[red]" onClick={<Link to={<Signup/>}/>}>Sign up</span>
           </div>
           
           <div>
@@ -22,7 +24,7 @@ function Login() {
 
           <div className="flex justify-between mt-3">
           <label htmlFor="password" className='capitalize  font-bold '> password</label>
-          <p className='text-[#1e6091] underline capitalize text-sm text-[blue] cursor--pointer hover:text-[red]'> forgot password?</p>
+          <p onClick={<Link to="/forgot-password"/>} className=' cursor-pointer text-[#1e6091] underline capitalize text-sm text-[blue] cursor--pointer hover:text-[red]'> forgot password?</p>
           </div>
          
           <div>
@@ -41,7 +43,7 @@ function Login() {
       </div>
 
       <div className="w-full md:w-[60%] lg:w-[50%]">
-        <img src={login} alt="Login image" className="w-full  "/>
+        <img src={login} alt="Login picture" className="w-full  "/>
       </div>
     </section>
   )
