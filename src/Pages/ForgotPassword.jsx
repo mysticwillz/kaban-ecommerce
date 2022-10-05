@@ -1,26 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import forgotpassword from "../assets/forgotpassword.png"
+import { useNavigate } from "react-router-dom"
 
 
 
 function ForgotPassword() {
+
+  const [email, setEmail] = useState("")
+  const handleChange = (e)=>{
+    setEmail(e.target.value)
+  };
+
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+  };
+
+  const navigate = useNavigate();
+
  return <section className='flex justify-center w-full mx-auto p-[30px] text-[#424b52] flex-wrap max-w-6xl'>
       <div className='flex flex-col items-center shadow-lg w-full md:w-[40%] lg:w-[50%] p-[25px]'>
-        <form className="w-full">
+        <form onSubmit={handleSubmit} className="w-full">
           <h2 className='font-bold text-[2rem] mb-2  '> Reset password </h2>
           <div className='text-sm pb-3'>
-            doesn't have an account yet? <span className="underline text-[blue] cursor-pointer hover:text-[red]" >Sign up</span>
+            doesn't have an account yet? <span onClick={()=>{navigate("/sign-up")}} className="underline text-[blue] cursor-pointer hover:text-[red]" >Sign up</span>
           </div>
           
           <div>
           <label htmlFor="email" className='capitalize font-bold '> enter your email address</label>
           </div>
           <div>
-          <input type="text" value="" placeholder='you@example.com' id="email" className='w-full  rounded shadow-sm bg-white p-[10px] focus:border-[#1e6091] '/>
+          <input onChange={handleChange} type="text" value={email} placeholder='you@example.com' id="email" className='w-full  rounded shadow-sm bg-white p-[10px] focus:border-[#1e6091] '/>
           </div>
 
           
-          <p className=' text-end underline capitalize text-sm text-[blue] cursor-pointer hover:text-[red] py-2'> back to login</p>
+          <p onClick={()=>{navigate("/login")}} className=' text-end underline capitalize text-sm text-[blue] cursor-pointer hover:text-[red] py-2'> back to login</p>
           
          
       
