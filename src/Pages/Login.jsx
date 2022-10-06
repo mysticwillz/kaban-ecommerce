@@ -4,6 +4,8 @@ import {FcGoogle} from "react-icons/fc"
 import {BsFacebook} from "react-icons/bs"
 import {  useNavigate } from "react-router-dom"
 import { useState } from "react"
+import {getAuth, signInWithEmailAndPassword} from "firebase/auth"
+import {toast} from "react-toastify"
 
 
 
@@ -24,10 +26,22 @@ function Login() {
     );
     
 
-    const handleSubmit = (e)=>(
+    async function handleSubmit (e){
       e.preventDefault()
-      
-    );
+      try {
+          const auth = getAuth()
+          const userCredential = await signInWithEmailAndPassword(auth, email, password)
+          
+          if(userCredential.user){
+              navigate("/profile")
+          }
+          
+      } catch (error) {
+          toast.error("user not verified")
+          
+      }
+
+  }
 
     
   const navigate = useNavigate();

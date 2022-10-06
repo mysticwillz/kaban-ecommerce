@@ -4,11 +4,9 @@ import {FcGoogle} from "react-icons/fc"
 import {BsFacebook} from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
-
 import {db} from "../Components/Firebase"
-
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
-
+import {toast} from "react-toastify"
 
 function Signup() {
   const [signup, setSignup] = useState({
@@ -42,9 +40,9 @@ function Signup() {
 
         await setDoc(doc(db, "users", user.uid),signupCopy)
      
-        navigate("/")
+        navigate("/profile")
     } catch (error) {
-        console.log(error)
+        toast.error("sorry there was a problem while signing up")
     }
 
 }

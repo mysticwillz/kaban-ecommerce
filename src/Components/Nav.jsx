@@ -1,12 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaUserAlt } from "react-icons/fa";
 import  {GiShoppingCart } from "react-icons/gi"
 import { useNavigate } from 'react-router-dom';
 import logo from "../assets/logo.png"
+import {getAuth, onAuthStateChanged} from "firebase/auth"
 
 function Nav() {
   const [search, setSearch] = useState("")
+  const [pageState, setPageState] = useState("login")
+
+  const auth = getAuth()
+
+  useEffect(()=>(
+    onAuthStateChanged(auth, (user)=>user ? setPageState("profile") : setPageState("login"))
+  ))
+
+
   const handleChange = (e)=>(
     setSearch(e.target.value)
   );
@@ -34,7 +44,7 @@ function Nav() {
           navigate("/login")
         }} className='flex justify-between items-center cursor-pointer m-[5px] hover:text-[#1f2d38] text-[#1e6091]'>
             <FaUserAlt className=' pr-[5px] text-3xl'/>
-            <p className='hidden md:block'>Login</p>
+            <p className='hidden md:block'>{pageState}</p>
             
           
         </div>
