@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import signupPicture from "../assets/signup.png"
-import {FcGoogle} from "react-icons/fc"
-import {BsFacebook} from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
 import {db} from "../Components/Firebase"
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
 import {toast} from "react-toastify"
 
+import GoogleAuth from '../Components/GoogleAuth'
 function Signup() {
   const [signup, setSignup] = useState({
     name:"",
@@ -45,7 +44,9 @@ function Signup() {
         toast.error("sorry there was a problem while signing up")
     }
 
-}
+};
+
+
 
   const navigate = useNavigate()
   return (
@@ -85,11 +86,9 @@ function Signup() {
           
           
           <p className='text-center mx-auto my-3 text-sm'> ------------------ <span> or Sign up with </span> -----------------</p>
-          <div className='flex justify-between'>
-            <button className='w-[45%] border-sm py-[ 10px] google-btn flex items-center justify-center'> <FcGoogle className='mx-1'/> Google</button>
-            <button className='w-[45%] bg-[transparent] border-red-400 border-sm border-solid py-[ 10px] facebook-btn flex items-center justify-center'> <BsFacebook className='mx-1'/> Facebook</button>
 
-          </div>   
+          <GoogleAuth/>
+         
         </form>
       </div>
 

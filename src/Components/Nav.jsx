@@ -13,7 +13,7 @@ function Nav() {
   const auth = getAuth()
 
   useEffect(()=>(
-    onAuthStateChanged(auth, (user)=>user ? setPageState("profile") : setPageState("login"))
+    onAuthStateChanged(auth, (user)=>user ? setPageState(`hi, williams`) : setPageState("login"))
   ))
 
 
