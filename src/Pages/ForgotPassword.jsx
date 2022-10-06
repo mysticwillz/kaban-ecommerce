@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth'
 import forgotpassword from "../assets/forgotpassword.png"
 import { useNavigate } from "react-router-dom"
+import { toast } from 'react-toastify'
 
 
 
@@ -11,10 +13,19 @@ function ForgotPassword() {
     setEmail(e.target.value)
   };
 
-  const handleSubmit = (e)=>{
+  async function handleSubmit(e){
     e.preventDefault()
-  };
-
+    try {
+        const auth = getAuth()
+        await sendPasswordResetEmail(auth,email)
+        toast.success("email was sent")
+        
+    } catch (error) {
+        toast.error("could not send reset password")
+        
+    }
+   }
+   
   const navigate = useNavigate();
 
  return <section className='flex justify-center w-full mx-auto p-[30px] text-[#424b52] flex-wrap max-w-6xl'>
