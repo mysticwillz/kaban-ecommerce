@@ -5,10 +5,12 @@ import  {GiShoppingCart } from "react-icons/gi"
 import { useNavigate } from 'react-router-dom';
 import logo from "../assets/logo.png"
 import {getAuth, onAuthStateChanged} from "firebase/auth"
+import HandleAccount from './HandleAccount';
 
 function Nav() {
   const [search, setSearch] = useState("")
-  const [pageState, setPageState] = useState("login")
+  const [pageState, setPageState] = useState("login");
+  const [showAccount, setShowAccount] = useState(false)
 
   const auth = getAuth()
 
@@ -41,13 +43,21 @@ function Nav() {
        
        
         <div onClick={()=>{
-          navigate("/login")
-        }} className='flex justify-between items-center cursor-pointer m-[5px] hover:text-[#1f2d38] text-[#1e6091]'>
-            <FaUserAlt className=' pr-[5px] text-3xl'/>
+          setShowAccount(!showAccount)
+
+        }} >
+           
+           <div className='flex justify-between items-center cursor-pointer m-[5px] hover:text-[#1f2d38] text-[#1e6091]'>
+           <FaUserAlt className=' pr-[5px] text-3xl'/>
             <p className='hidden md:block'>{pageState}</p>
+           </div>
             
+            {showAccount && <div>
+              <HandleAccount pageState={pageState}/>
+            </div>}
           
         </div>
+
         <div onClick={()=>{
           navigate("/cart")
         }} className='flex cursor-pointer items-center hover:text-[#1f2d38] text-[#1e6091]'>
