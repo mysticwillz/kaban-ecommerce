@@ -1,17 +1,33 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {AiFillHeart} from "react-icons/ai"
 import {MdAccountCircle} from "react-icons/md"
 import {GiMilkCarton} from 'react-icons/gi'
 import {TiScissors} from 'react-icons/ti'
 import {useNavigate} from "react-router-dom"
 import {toast} from "react-toastify"
-import {getAuth, signOut, } from "firebase/auth"
+import {getAuth, signOut, onAuthStateChanged } from "firebase/auth"
 
 
 function HandleAccount() {
+
+    const [account, setAccount] = useState(false)
+    const auth = getAuth();
+
+    {   useEffect(()=>{
+        
+
+        onAuthStateChanged(auth, (user)=>{
+            if(user){
+                setAccount(true)
+                
+            }
+           
+            
+        })
+    },[])   }      
     
     const navigate = useNavigate()
-     const auth = getAuth()
+    
 
    async function handleLogOut(){
     try {
@@ -64,7 +80,7 @@ function HandleAccount() {
   return (
     <section className="absolute right-[0%] top-[18%] overflow-x-hidden">
   
-                 <IsLoggedIn/>
+    { account ? <IsLoggedIn/> : <IsLoggedOut/>}
            
         
     </section>
