@@ -11,12 +11,13 @@ function Nav() {
   const [search, setSearch] = useState("")
   const [pageState, setPageState] = useState("login");
   const [showAccount, setShowAccount] = useState(false)
+ 
 
   const auth = getAuth()
 
   useEffect(()=>(
-    onAuthStateChanged(auth, (user)=>user ? setPageState(`hi, williams`) : setPageState("login"))
-  ))
+    onAuthStateChanged(auth, (user)=>user ? setPageState(`hi, williams`)  : setPageState("login"), ) 
+  ),[])
 
 
   const handleChange = (e)=>(
@@ -53,7 +54,7 @@ function Nav() {
            </div>
             
             {showAccount && <div>
-              <HandleAccount pageState={pageState}/>
+              <HandleAccount/>
             </div>}
           
         </div>
