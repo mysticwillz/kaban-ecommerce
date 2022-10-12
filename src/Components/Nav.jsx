@@ -32,9 +32,9 @@ function Nav() {
   
   return (
    <div className='w-full text-[#424b52] h-2xl bg-[#fff] shadow-lg '>
-     <nav className='max-w-6xl flex justify-between items-center mx-auto p-4'>
+     <nav className='max-w-7xl flex justify-between items-center mx-auto p-4'>
        
-        <img src={logo} alt='Kaban Logo' className='h-[90px] cursor-pointer mr-[7px]'/>
+        <h1 className=" text-[2rem] md:text-[2.3rem]">Kaban</h1>
         
         <form onSubmit={handleSubmit} className='relative flex items-center '>
            <AiOutlineSearch className='absolute left-0 text-[1.3rem] font-bold ml-[5px] '/>

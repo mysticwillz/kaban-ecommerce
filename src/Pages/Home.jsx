@@ -1,9 +1,74 @@
-import React from 'react'
+import one from "../kabanhero/one.png"
+import two from "../kabanhero/two.png"
+import three from "../kabanhero/three.png"
+import four from "../kabanhero/four.png"
+import five from "../kabanhero/five.png"
+import six from "../kabanhero/six.png"
 
-function Home() {
+import "swiper/css/bundle";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import {useState,useEffect} from "react"
+
+
+
+// import required modules
+import { Autoplay, Pagination, Navigation } from "swiper";
+
+
+export default function Home() {
+  const images = [{img:one,alt:"first hero",
+id:1},
+  {img:two,alt:"second hero",id:2},
+  {img:three, alt:"third hero",id:3},
+  {img:four,alt:"fourth hero",id:4},{img:five, alt:"fifth hero",id:5},
+  {img:six,alt:"sixth hero",id:6}];
+ 
   return (
-    <div>Home</div>
-  )
-}
+  <main className=" flex justify-center" >
+    <div className="max-w-7xl md:h-[60vh] flex ">
+      <div className="mt-[15px] rounded-[10px] flex items-start hidden lg:block w-[20%]  bg-black h-[55vh] mr-[15px]">
 
-export default Home
+      </div>
+     <div className=" w-full  h-[40vh] lg:w-[60%] md:h-[60vh] flex items-center justify-center mx-auto ">
+
+     <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper w-full h-[100%] "
+      >
+        {images.map((image)=>{
+          const {img, alt, id} = image
+
+          return <SwiperSlide key={id} className="  flex items-start justify-center h-[40vh] lg:h-[65vh] w-full mx-auto"><img src={img} alt={alt}  className=" rounded-[10px]  h-full min-w-[500px] p-1 lg:p-0  mx-auto"/></SwiperSlide>
+        })}
+        
+       
+      </Swiper>
+
+     </div>
+
+     <div className=" rounded-[10px] mt-[15px] hidden ml-[15px] lg:block w-[20%] bg-white h-[55vh]  flex-col items-start">
+       
+     <div className="w-full h-[50%] bg-white"></div>
+     <div className="w-full h-[50%]  bg-[red]"></div>
+        
+
+      </div>
+    </div>
+  </main>
+  );
+}

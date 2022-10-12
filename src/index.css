@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color:#eae2b7;
+    position: relative;
+}
 
 .google-btn{
     border: 1px solid rgb(160, 19, 19);
@@ -17,4 +24,70 @@
     color: white;
     background-color: rgb(160, 19, 19);
 }
+
+/* ! swiper js  */
+
+
+.swiper {
+  width: 100%;
+  
+}
+
+/* .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+} */
+
+.swiper-slide img {
+  
+  object-fit: contain;
+  
+  
+  text-align: center;
+  margin: 0 auto;
+  
+}
+
+@media (min-width:1024px){
+  .swiper-wrapper{
+    height:60vh;
+  
+  }
+
+  .swiper {
+    width: 100%;
+    height: 60vh;
+    
+  }
+}
+
+.swiper-button-prev{
+  color: red !important;
+  font-size: large;
+  
+}
+.swiper-button-next{
+  color: red !important;
+  font-size: large;
+  
+}
+
+
+
+
 
