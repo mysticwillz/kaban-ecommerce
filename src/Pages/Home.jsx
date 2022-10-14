@@ -13,12 +13,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import {useState,useEffect} from "react"
-
-
-
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
 
+import Products from "../Components/Products.jsx"
 
 export default function Home() {
   const images = [{img:one,alt:"first hero",
@@ -29,12 +27,13 @@ id:1},
   {img:six,alt:"sixth hero",id:6}];
  
   return (
-  <main className=" flex justify-center" >
-    <div className="max-w-7xl md:h-[60vh] flex ">
-      <div className="mt-[15px] rounded-[10px] flex items-start hidden lg:block w-[20%]  bg-black h-[55vh] mr-[15px]">
+  <main  >
+    <section className="flex justify-center">
+    <div className="max-w-7xl md:h-[60vh] flex md:mt-[15px] ">
+      <div className=" rounded-[10px] flex items-start hidden lg:block w-[20%]  bg-black h-[60vh] mr-[15px]">
 
       </div>
-     <div className=" w-full  h-[40vh] lg:w-[60%] md:h-[60vh] flex items-center justify-center mx-auto ">
+     <div className=" w-full  h-[40vh] lg:w-[60%] md:h-[60vh]  flex items-center justify-center mx-auto ">
 
      <Swiper
         spaceBetween={30}
@@ -53,7 +52,9 @@ id:1},
         {images.map((image)=>{
           const {img, alt, id} = image
 
-          return <SwiperSlide key={id} className="  flex items-start justify-center h-[40vh] lg:h-[65vh] w-full mx-auto"><img src={img} alt={alt}  className=" rounded-[10px]  h-full min-w-[500px] p-1 lg:p-0  mx-auto"/></SwiperSlide>
+          return <SwiperSlide key={id} className= " rounded-[10px] flex items-start justify-center h-[40vh] lg:h-[65vh] w-full mx-auto">
+            <img src={img} alt={alt}  className=" object-contain lg:object-cover rounded-[10px]  h-full min-w-[500px] p-1 lg:p-0  mx-auto"/>
+            </SwiperSlide>
         })}
         
        
@@ -61,14 +62,18 @@ id:1},
 
      </div>
 
-     <div className=" rounded-[10px] mt-[15px] hidden ml-[15px] lg:block w-[20%] bg-white h-[55vh]  flex-col items-start">
+     <div className=" rounded-[10px]  hidden ml-[15px] lg:block w-[20%] bg-white h-[60vh]  flex-col items-start">
        
-     <div className="w-full h-[50%] bg-white"></div>
-     <div className="w-full h-[50%]  bg-[red]"></div>
+     <div className="w-full h-[50%] rounded-t-[10px]  bg-white"></div>
+     <div className="w-full h-[50%] rounded-b-[10px] bg-[red]"></div>
         
 
       </div>
     </div>
+    
+   
+  </section>
+  <Products/>
   </main>
   );
 }
