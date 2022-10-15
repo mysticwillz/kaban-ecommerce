@@ -6,8 +6,9 @@
 
 body{
     font-family: 'Roboto', sans-serif;
-    background-color:#eae2b7;
+    background-color:#a10c2075;
     position: relative;
+    overflow-x:hidden;
 }
 
 .google-btn{
@@ -83,13 +84,6 @@ body{
 
 /* ? products */
 
-/* #app { height: 100% }
-html, */
-/* body {
-  position: relative;
-  height: 100%;
-} */
-
 
 
 .swiper {
@@ -126,4 +120,16 @@ html, */
   
 } 
 
+
+.product-div{
+  
+  cursor: pointer;
+  padding: 5px 5px;
+  transition: all 0.25s ease-in-out;
+}
+
+.product-div:hover{
+  transform: translateY(-1%);
+
+}
 
