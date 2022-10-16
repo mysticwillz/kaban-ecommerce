@@ -6,7 +6,7 @@
 
 body{
     font-family: 'Roboto', sans-serif;
-    background-color:#a10c2075;
+    background-color:#a3e2f575;
     position: relative;
     overflow-x:hidden;
 }
@@ -126,6 +126,7 @@ body{
   cursor: pointer;
   padding: 5px 5px;
   transition: all 0.25s ease-in-out;
+  border: 1px  solid silver;
 }
 
 .product-div:hover{
