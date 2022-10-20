@@ -26,17 +26,25 @@ import allData from "./shopData/Data.jsx"
 function ItemsPage() {
   
   const myId = useParams().id
-  console.log(myId)
-  
-  
-  return (<>{
-   
-     allData.filter((data)=>{
-     if(data.id === myId ){
-        return true
-      }
-    }).map((data)=>{
-      const {img, para:itemDescription, name, id, price} = data;
+ 
+  const itemData = allData.filter((data)=>{
+    if(data.id === myId ){
+      console.log(data.category)
+       return true
+     }
+   })
+   return (<>{
+     
+     itemData.map((data)=>{
+      const {img, para:itemDescription, name, id, price, category} = data;
+
+  const youMayAlsoLike =    allData.filter((x)=>{
+        if(x.category===category){
+          return true
+        }
+      });
+      
+      
           
         return   <main key={id}  className="bg-white max-w-7xl mt-[15px] mx-auto h-[70%]">
     
@@ -92,46 +100,59 @@ function ItemsPage() {
             {itemDescription}
           </p>
         </section>
+        <section key={id}>
+      <div className=' w-full py-1 border-b border-current mb-15px[]'>
+      <h1 className='capitalize text-center'>you may also like</h1>
+      </div>
+
+      <Swiper
+      slidesPerView={3}
+      spaceBetween={30}
+      slidesPerGroup={3}
+      loop={true}
+      loopFillGroupWithBlank={true}
+      pagination={{
+        clickable: true,
+      }}
+      navigation={true}
+      modules={[Pagination, Navigation]}
+      className="mySwiper"
+    > `${
+      youMayAlsoLike.map((x)=>{
+        const {price, name, img, id,} = x
+        console.log(name)
+        
+        return <SwiperSlide>
+        <div key={id}>
+          <img src={img} alt="item" />
+          <p>{name}</p>
+          <p>{price}</p>
+
+        
+        </div>
+        </SwiperSlide>
+
+      })
+    }`
+      
+      
+    </Swiper>
+    </section>
+     
   
-        <section>
-         
-          <div className=' w-full py-1 border-b border-current mb-15px[]'>
-          <h1 className='capitalize text-center'>you may also like</h1>
-          </div>
   
-          <Swiper
-          slidesPerView={3}
-          spaceBetween={30}
-          slidesPerGroup={3}
-          loop={true}
-          loopFillGroupWithBlank={true}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={true}
-          modules={[Pagination, Navigation]}
-          className="mySwiper"
-        >
-          <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide>
-          <SwiperSlide>Slide 5</SwiperSlide>
-          <SwiperSlide>Slide 6</SwiperSlide>
-          <SwiperSlide>Slide 7</SwiperSlide>
-          <SwiperSlide>Slide 8</SwiperSlide>
-          <SwiperSlide>Slide 9</SwiperSlide>
-        </Swiper>
-        </section>
           
       </main>
      
-   
+     
     })
-   
+    
+    
+    
+  }
  
 
- }</>
+    </>
  
  )
 
