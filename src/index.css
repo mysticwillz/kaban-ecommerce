@@ -2,36 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
 
-body{
-    font-family: 'Roboto', sans-serif;
-    background-color:#a3e2f575;
-    position: relative;
-    overflow-x:hidden;
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #a3e2f575;
+  position: relative;
+  overflow-x: hidden;
 }
 
-.google-btn{
-    border: 1px solid rgb(160, 19, 19);
-    padding: 5px 10px;
-    border-radius: 10px 0px 10px 0;
-    color: rgb(160, 19, 19);
-    transition: all 0.25s ease-in-out;
+.google-btn {
+  border: 1px solid rgb(160, 19, 19);
+  padding: 5px 10px;
+  border-radius: 10px 0px 10px 0;
+  color: rgb(160, 19, 19);
+  transition: all 0.25s ease-in-out;
 }
 
-
-
-.google-btn:hover{
-    color: white;
-    background-color: rgb(160, 19, 19);
+.google-btn:hover {
+  color: white;
+  background-color: rgb(160, 19, 19);
 }
 
 /* ! swiper js  */
 
-
 .swiper {
   width: 100%;
-  
 }
 
 /* .swiper-slide {
@@ -54,37 +50,27 @@ body{
   align-items: center;
 } */
 
-
-
-@media (min-width:1024px){
-  .swiper-wrapper{
-    height:60vh;
-  
+@media (min-width: 1024px) {
+  .swiper-wrapper {
+    height: 60vh;
   }
 
   .swiper {
     width: 100%;
     height: 60vh;
-    
   }
 }
 
-.swiper-button-prev{
+.swiper-button-prev {
   color: red !important;
   font-size: large;
-  
 }
-.swiper-button-next{
+.swiper-button-next {
   color: red !important;
   font-size: large;
-  
 }
-
-
 
 /* ? products */
-
-
 
 .swiper {
   width: 100%;
@@ -92,8 +78,6 @@ body{
 }
 
 .swiper-slide {
-
-
   /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
@@ -109,36 +93,30 @@ body{
   align-items: center;
 }
 
- .swiper-slide img {
+.swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  
-  
+
   margin: 0 auto;
-  
-} 
+}
 
-
-.product-div{
-  
+.product-div {
   cursor: pointer;
   padding: 5px 5px;
   transition: all 0.25s ease-in-out;
-  border: 1px  solid silver;
+  border: 1px solid silver;
 }
 
-.product-div:hover{
+.product-div:hover {
   transform: translateY(-1%);
-
 }
 
-
-.hide{
+.hide {
   opacity: 0;
 }
 
-.show{
+.show {
   opacity: 1;
 }
