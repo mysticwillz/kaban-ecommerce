@@ -13,14 +13,13 @@ const TopSellingItemsData = [
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCDOf3jz9bt-ViqCWpum6iMsQLsDVdZgvByQ&usqp=CAU",
     price: 2000,
     name: "macbook pro 2022",
-    itemPictures: {
-      sub1_img:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCDOf3jz9bt-ViqCWpum6iMsQLsDVdZgvByQ&usqp=CAU",
-      sub2_img:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCDOf3jz9bt-ViqCWpum6iMsQLsDVdZgvByQ&usqp=CAU",
-      sub3_img:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCDOf3jz9bt-ViqCWpum6iMsQLsDVdZgvByQ&usqp=CAU",
-    },
+    itemPictures: [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCDOf3jz9bt-ViqCWpum6iMsQLsDVdZgvByQ&usqp=CAU",
+
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCDOf3jz9bt-ViqCWpum6iMsQLsDVdZgvByQ&usqp=CAU",
+
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCDOf3jz9bt-ViqCWpum6iMsQLsDVdZgvByQ&usqp=CAU",
+    ],
     category: "laptop",
     para: "Macbook pro did exactly what you said it does  Just what I was looking for",
   },

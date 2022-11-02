@@ -95,7 +95,7 @@ export default function Profile() {
         </p>
       </div>
 
-      <div className="max-w-2xl">
+      <div className="max-w-2xl mx-auto px-4 mt-[25px]">
         <button className="h-[50px] w-full mx-auto rounded  cursor-pointer  text-white text-center uppercase flex justify-center items-center bg-[#1e6091]">
           list a product
         </button>
