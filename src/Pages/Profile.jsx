@@ -82,21 +82,26 @@ export default function Profile() {
               changeDetail && handleSubmit();
               setChangeDetail((prev) => !prev);
             }}
-            className="text-red-400 cursor-pointer pl-[4px] text-[16px] whitespace-nowrap capitalize"
+            className="text-red-400 hover:text-red-600 transition duration-250 ease-in-out cursor-pointer pl-[4px] text-[16px] whitespace-nowrap capitalize"
           >
             {changeDetail ? "Apply Change" : "Edit"}
           </span>
         </p>
         <p
           onClick={handleLogOut}
-          className="text-[#1e6091] whitespace-nowrap cursor-pointer"
+          className="text-[#1e6091] hover:text-[#424b52] transition duration-250 ease-in-out whitespace-nowrap cursor-pointer"
         >
           Sign out
         </p>
       </div>
 
       <div className="max-w-2xl mx-auto px-4 mt-[25px]">
-        <button className="h-[50px] w-full mx-auto rounded  cursor-pointer  text-white text-center uppercase flex justify-center items-center bg-[#1e6091]">
+        <button
+          onClick={() => {
+            navigate("/create-listing");
+          }}
+          className="h-[50px] w-full mx-auto rounded hover:bg-[#424b52]  transition duration-250 ease-in-out cursor-pointer  text-white text-center uppercase flex justify-center items-center bg-[#1e6091]"
+        >
           list a product
         </button>
       </div>
