@@ -27,18 +27,8 @@ function ItemsPage() {
   });
   return (
     <>
-      {itemData.map((data) => {
-        const {
-          img,
-          para: itemDescription,
-          name,
-          id,
-          price,
-          category,
-          itemPictures: { sub1_img, sub2_img, sub3_img },
-        } = data;
-
-        console.log({ sub1_img, sub2_img, sub3_img });
+      {itemData?.map((data) => {
+        const { img, para: itemDescription, name, id, price, category } = data;
 
         const youMayAlsoLike = allData
           .filter((x) => {
@@ -64,28 +54,6 @@ function ItemsPage() {
               <section className="w-[80%] flex justify-between items-center md:pr-2">
                 <div className="flex flex-col w-[40%] ">
                   <img src={img} alt="item" className="w-full px-2 py-4" />
-
-                  {{ sub1_img, sub2_img, sub3_img } && (
-                    <div className="flex w-full flex-wrap">
-                      <img
-                        src={sub1_img}
-                        alt="item"
-                        className=" max-w-[50px] max-h-[70px]    cursor-pointer  hover:border border-light-800 mx-2 "
-                      />
-
-                      <img
-                        src={sub2_img}
-                        alt="item"
-                        className=" max-w-[50px] max-h-[70px]    cursor-pointer  hover:border border-light-800 mx-2 "
-                      />
-
-                      <img
-                        src={sub3_img}
-                        alt="item"
-                        className=" max-w-[50px] max-h-[70px]    cursor-pointer  hover:border border-light-800 mx-2 "
-                      />
-                    </div>
-                  )}
                 </div>
 
                 <div className=" px-2 ">

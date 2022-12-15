@@ -6,9 +6,11 @@ import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import HandleAccount from "./HandleAccount";
+import { SearchMobile, SearchDesktop } from "./Search";
 
 function Nav() {
   const [search, setSearch] = useState("");
+
   const [pageState, setPageState] = useState("login");
   const [showAccount, setShowAccount] = useState(false);
 
@@ -34,21 +36,11 @@ function Nav() {
       <nav className="max-w-7xl flex justify-between items-center mx-auto p-4">
         <h1 className=" text-[2rem] md:text-[2.3rem]">Kaban</h1>
 
-        <form onSubmit={handleSubmit} className="relative flex items-center ">
-          <AiOutlineSearch className="absolute left-0 text-[1.3rem] font-bold ml-[5px] " />
-          <input
-            onChange={handleChange}
-            type="search"
-            value={search}
-            id="search"
-            placeholder="Search products"
-            className=" rounded text-sm border-sm border-[#5b7e99] md:w-[400px]  lg:w-[600px] pl-[2rem] focus:border-[#1e6091]"
-          />
-          <button className=" shadow ml-[10px] uppercase mx-auto  md:w-[9rem] py-[10px] px-[15px] bg-[#1e6091] text-white rounded h-[40px] flex items-center justify-center cursor-pointer transition duration-150 ease-in-out hover:bg-[#1f2d38]">
-            {" "}
-            search{" "}
-          </button>
-        </form>
+        <SearchDesktop
+          search={search}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
 
         <div
           onClick={() => {
@@ -77,6 +69,12 @@ function Nav() {
           <p className="hidden md:block">Cart</p>
         </div>
       </nav>
+
+      <SearchMobile
+        search={search}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 }

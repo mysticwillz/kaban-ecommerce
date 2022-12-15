@@ -107,6 +107,7 @@ function CreateListing() {
       ...listData,
       imgUrls,
       timestamp: serverTimestamp(),
+      userRef: auth.currentUser.uid,
     };
 
     delete listDataCopy.img;

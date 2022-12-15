@@ -5,6 +5,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import MyListings from "../Components/MyListings";
 
 export default function Profile() {
   const auth = getAuth();
@@ -100,11 +101,13 @@ export default function Profile() {
           onClick={() => {
             navigate("/create-listing");
           }}
-          className="h-[50px] w-full mx-auto rounded hover:bg-[#424b52]  transition duration-250 ease-in-out cursor-pointer  text-white text-center uppercase flex justify-center items-center bg-[#1e6091]"
+          className="h-[50px] w-full mx-auto mb-[1.7rem] rounded hover:bg-[#424b52]  transition duration-250 ease-in-out cursor-pointer  text-white text-center uppercase flex justify-center items-center bg-[#1e6091]"
         >
           list a product
         </button>
       </div>
+
+      <MyListings />
     </section>
   );
 }

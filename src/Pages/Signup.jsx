@@ -124,7 +124,7 @@ function Signup() {
 
           <p className="text-center mx-auto my-3 text-sm">
             {" "}
-            ------------------ <span> or Sign up with </span> -----------------
+            ------------ <span> or Sign up with </span> -----------
           </p>
 
           <GoogleAuth />
