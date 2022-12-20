@@ -32,7 +32,7 @@ export default function Home() {
     <main>
       <section className="flex justify-center">
         <div className="max-w-7xl md:h-[60vh] flex md:mt-[15px] ">
-          <div className=" rounded-[10px]  items-start hidden lg:block w-[20%]  bg-black h-[60vh] mr-[15px]"></div>
+          <div className=" rounded  items-start hidden lg:block w-[20%]  bg-black h-[60vh] mr-[15px]"></div>
           <div className=" w-full  h-[40vh] lg:w-[60%] md:h-[60vh]  flex items-center justify-center mx-auto ">
             <Swiper
               spaceBetween={30}
@@ -68,8 +68,8 @@ export default function Home() {
           </div>
 
           <div className=" rounded-[10px]  hidden ml-[15px] lg:block w-[20%] bg-white h-[60vh]  flex-col items-start">
-            <div className="w-full h-[50%] rounded-t-[10px]  bg-white"></div>
-            <div className="w-full h-[50%] rounded-b-[10px] bg-[red]"></div>
+            <div className="w-full h-[50%] rounded-t  bg-white"></div>
+            <div className="w-full h-[50%] rounded-b bg-[red]"></div>
           </div>
         </div>
       </section>

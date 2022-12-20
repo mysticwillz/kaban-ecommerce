@@ -6,13 +6,13 @@ import TopSellingItemsData from "./shopData/TopSellingItems";
 function Products() {
   return (
     <>
-      <main className="  grid grid-cols-5 gap-2 mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
+      <main className="  flex items-center justify-between  mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
         {TopSellingItemsData.map((product) => {
           const { id, img, price, name } = product;
           return (
             <section
               key={id}
-              className="flex flex-col   w-[250px] h-[380px]  border hover:shadow- rounded  bg-white px-4 py-4 cursor-pointer  "
+              className="flex flex-col   w-[250px] h-[380px] mb-2 mx-2 lg:mx-0  border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  "
             >
               <div className="flex  justify-end items-center w-full  mb-2 ">
                 <BsFillSuitHeartFill className="   text-red-400 text-[22px]" />

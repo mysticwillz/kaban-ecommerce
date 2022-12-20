@@ -27,7 +27,7 @@ function App() {
         </Route>
 
         <Route path="/login" element={<Login />} />
-        <Route path="/item/:id" element={<ItemsPage />} />
+        <Route path="/item" element={<ItemsPage />} />
 
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/cart" element={<Cart />} />
