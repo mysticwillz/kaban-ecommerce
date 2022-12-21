@@ -1,5 +1,7 @@
 import React from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { TbBuildingStore } from "react-icons/tb";
+import { MdOutlineLocalShipping } from "react-icons/md";
 
 function ItemsPage() {
   return (
@@ -12,21 +14,21 @@ function ItemsPage() {
             className="w-[500px] h-[400px]"
           />
           <div className="flex  items-center justify-center ">
-            <div className="flex  items-center justify-center w-[50px] h-[50px] border border-blue-400">
+            <div className="flex  items-center justify-center w-[55px] h-[55px] border-[2px] border-red-500">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmR4jkEpjxw8UNqthaL6bcKZTivc8444J5vA&usqp=CAU"
                 alt="item description"
                 className="flex  w-[50px] h-[50px] "
               />
             </div>
-            <div className="flex  items-center justify-center w-[50px] h-[50px] m-4 border border-blue-400">
+            <div className="flex  items-center justify-center w-[55px] h-[55px] m-4 border-[2px] border-red-500">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmR4jkEpjxw8UNqthaL6bcKZTivc8444J5vA&usqp=CAU"
                 alt="item description"
                 className="flex  w-[50px] h-[50px] "
               />
             </div>
-            <div className="flex  items-center justify-center w-[50px] h-[50px] border border-blue-400">
+            <div className="flex  items-center justify-center w-[55px] h-[55px] border-[2px] border-red-500">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmR4jkEpjxw8UNqthaL6bcKZTivc8444J5vA&usqp=CAU"
                 alt="item description"
@@ -57,8 +59,24 @@ function ItemsPage() {
             Click here to show phone number
           </p>
           <button className="text-[18px] rounded my-6 border border-[#1e6091] bg-[#1e6091] text-white hover:bg-[#fff] hover:text-[#1e6091] transition-all duration-300 ease-in flex justify-center items-center h-[40px] w-full">
-            Add to cart
+            Purchase Now
           </button>
+          <div className="flex items-center ">
+            <div className="flex items-center pr-6">
+              <MdOutlineLocalShipping className=" text-[50px] pr-4 font-bold  text-[#1e6091] " />
+              <p>Pickup & Pay on Collection Available</p>
+            </div>
+            <div className="flex items-center ">
+              <TbBuildingStore className=" text-[50px] font-bold pr-4  text-[#1e6091]" />
+              <p>Kaban Warehouse</p>
+            </div>
+          </div>
+          <p className="text-[12px] mb-2  text-[#1f2d38]">
+            sold by
+            <span className="text-[12px] ml-1 text-red-500 pb-1 border-b-[2px] border-solid border-red-500  ">
+              Willz Wonderland
+            </span>
+          </p>
         </article>
       </section>
     </main>
