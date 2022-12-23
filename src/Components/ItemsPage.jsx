@@ -3,6 +3,9 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { TbBuildingStore } from "react-icons/tb";
 import { FaInstagram, FaWhatsapp, FaTwitter } from "react-icons/fa";
 import { MdOutlineLocalShipping } from "react-icons/md";
+import { BsSuitHeart, BsFillSuitHeartFill } from "react-icons/bs";
+import TopSellingItemsData from "./shopData/TopSellingItems";
+import allData from "./shopData/Data";
 
 function ItemsPage() {
   return (
@@ -89,14 +92,53 @@ function ItemsPage() {
 
       <section>
         <t2 className=" text-[30px] font-bold text-[#1e6091] ">Description</t2>
-        <div className=" text-[18px] w-[600px]">
-          <p className=" text-[#767879db] text-[18px] w-[600px]">
+        <div className=" text-[18px] w-[600px] ">
+          <p className=" text-[#767879db] text-[18px] w-[600px] mb-[10px]">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
             eius eaque incidunt suscipit, consectetur saepe facilis? Distinctio
             velit ducimus quae inventore in voluptatem? Nostrum reprehenderit
             modi, repellendus maiores nihil nulla.
           </p>
         </div>
+      </section>
+      <t2 className=" text-[30px] font-bold text-[#1e6091]  ">
+        Similar Products You May Like
+      </t2>
+      <section className="  flex items-center justify-between flex-wrap  mx-auto  w-full max-w-7xl    mt-[10px]">
+        {allData.map((product) => {
+          const { id, img, price, name } = product;
+          return (
+            <div
+              key={id}
+              className="flex flex-col   w-[250px] h-[380px] mb-2 mx-2 lg:mx-0  border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  "
+            >
+              <div className="flex  justify-end items-center w-full  mb-2 ">
+                <BsFillSuitHeartFill className="   text-red-400 text-[22px]" />
+              </div>
+              <div className="flex  justify-center items-center w-full h-[170px]   mb-2 ">
+                <img src={img} alt="product " className=" w-full h-full" />
+              </div>
+              <t5 className="capitalize mb-2  text-[#1f2d38]">{name}</t5>
+              <div className="flex  justify-between items-center w-full  mb-2  ">
+                <h2 className=" text-[20px] font-bold text-[#1f2d38]">
+                  $ {price}
+                </h2>
+                <strike className="text-[17px] text-[#767879db]">
+                  $ {price / 5}
+                </strike>
+              </div>
+              <p className="text-[12px] mb-2  text-[#1f2d38]">
+                sold by
+                <span className="text-[12px] ml-1 text-[#1e6091] ">
+                  Willz Wonderland
+                </span>
+              </p>
+              <button className="text-[18px] rounded border border-[#1e6091] text-[#1e6091] hover:text-white hover:bg-[#1e6091] transition-all duration-300 ease-in flex justify-center items-center h-[40px] w-full">
+                Add to cart
+              </button>
+            </div>
+          );
+        })}
       </section>
     </main>
   );
