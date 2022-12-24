@@ -1,5 +1,6 @@
 import React from "react";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
+import { FiTrash2 } from "react-icons/fi";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 function Cart() {
@@ -48,8 +49,8 @@ function Cart() {
                   <AiOutlinePlus className=" text-[18px] font-bold cursor-pointer  " />
                 </div>
               </td>
-              <td className=" lg:pl-6">10,000</td>
-              <td className=" lg:pl-6">Delete</td>
+              <td className=" lg:pl-6">$ 10,000</td>
+              <td className=" text-red-500 lg:pl-6">Delete</td>
             </tr>
 
             <tr className=" bg-[#dfdada3a]  my-2">
@@ -79,19 +80,62 @@ function Cart() {
                   <AiOutlinePlus className=" text-[18px] font-bold cursor-pointer  " />
                 </div>
               </td>
-              <td className=" lg:pl-6">10,000</td>
-              <td className=" lg:pl-6">Delete</td>
+              <td className=" lg:pl-6">$ 10,000</td>
+              <FiTrash2 className="text-red-500 lg:pl-6 text-[60px]" />
             </tr>
           </tbody>
         </table>
-        <table className="  w-[350px] border ">
-          <tbody>
-            <tr className=" flex justify-between items-center h-[40px] w-[350px] px-2">
-              <th>Order Summary</th>
-              <th>7 items</th>
-            </tr>
-          </tbody>
-        </table>
+        <div className="  w-[350px] border  flex-col  flex justify-start  items-center  mx-auto bg-[#fff] ">
+          <table className="  w-[350px]  bg-[#1e6091] text-white ">
+            <tbody>
+              <tr className=" flex justify-between items-center h-[40px] px-2 ">
+                <th>Order Summary</th>
+                <th>7 items</th>
+              </tr>
+            </tbody>
+          </table>
+          <div className="   border-b flex justify-between items-start  w-[350px] p-2 ">
+            <p>Delivery Charges:</p>
+            <p className=" text-[11px] w-[120px]">
+              Add your Delivery address at checkout to see delivery charges
+            </p>
+          </div>
+          <div className="   border-b flex justify-between items-start  w-[350px] p-2 ">
+            <p>Subtotal:</p>
+            <p className=" ">₦281,499</p>
+          </div>
+          <div className="   border-b flex justify-between items-start  w-[350px] p-2 ">
+            <t4 className=" text-[22px] font-bold">Total:</t4>
+            <t4 className=" text-[22px] font-bold">₦281,499</t4>
+          </div>
+          <div className="    flex justify-end items-start  w-[350px] px-2 ">
+            <p className=" text-[12px] text-end text-red-500 ">
+              Excluding delivery charges
+            </p>
+          </div>
+          <div className="    flex justify-center  items-center   w-[350px] px-2 ">
+            <button className="text-[18px] rounded my-6 border border-[#1e6091] bg-[#1e6091] capitalize text-white hover:bg-[#fff] hover:text-[#1e6091] transition-all duration-300 ease-in flex justify-center items-center h-[40px] w-full">
+              continue to checkout
+            </button>
+          </div>
+          <div className="    flex justify-between items-center w-[350px] px-2 ">
+            <p className=" text-[12px] text-end text-red-500 ">We accept:</p>
+            <div className="  w-[200px]  flex justify-between items-center   ">
+              <img
+                src="https://www-konga-com-res.cloudinary.com/image/upload/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/assets/images/content/mastercard.png"
+                alt="payment resource"
+              />
+              <img
+                src="https://www-konga-com-res.cloudinary.com/image/upload/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/assets/images/content/visacard.png"
+                alt="payment resource"
+              />
+              <img
+                src="https://www-konga-com-res.cloudinary.com/image/upload/w_auto,f_auto,fl_lossy,dpr_auto,q_auto/assets/images/content/vervecard.png"
+                alt="payment resource"
+              />
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   );
