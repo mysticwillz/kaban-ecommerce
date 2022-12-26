@@ -50,7 +50,9 @@ function Cart() {
                 </div>
               </td>
               <td className=" lg:pl-6">$ 10,000</td>
-              <td className=" text-red-500 lg:pl-6">Delete</td>
+              <td className=" lg:pl-8 ">
+                <FiTrash2 className=" hover:text-red-500 text-[#1e6091] cursor-pointer transition all duration-300 ease-in text-[22px]" />
+              </td>
             </tr>
 
             <tr className=" bg-[#dfdada3a]  my-2">
@@ -81,7 +83,9 @@ function Cart() {
                 </div>
               </td>
               <td className=" lg:pl-6">$ 10,000</td>
-              <FiTrash2 className="text-red-500 lg:pl-6 text-[60px]" />
+              <td className=" lg:pl-8 ">
+                <FiTrash2 className=" hover:text-red-500 text-[#1e6091] cursor-pointer transition all duration-300 ease-in text-[22px]" />
+              </td>{" "}
             </tr>
           </tbody>
         </table>

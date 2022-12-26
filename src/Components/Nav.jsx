@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
+
 import { FaUserAlt } from "react-icons/fa";
+import { FiMenu } from "react-icons/fi";
 import { GiShoppingCart } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import HandleAccount from "./HandleAccount";
 import { SearchMobile, SearchDesktop } from "./Search";
+import Sidebar from "./Sidebar";
 
 function Nav() {
   const [search, setSearch] = useState("");
 
   const [pageState, setPageState] = useState("login");
   const [showAccount, setShowAccount] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   const auth = getAuth();
 
@@ -68,8 +71,14 @@ function Nav() {
           <GiShoppingCart className=" pr-[5px] text-4xl" />
           <p className="hidden md:block">Cart</p>
         </div>
+        <FiMenu
+          className=" pr-[5px] text-4xl"
+          onClick={() => {
+            setShowMenu(true);
+          }}
+        />
       </nav>
-
+      <Sidebar setShowMenu={setShowMenu} showMenu={showMenu} />
       <SearchMobile
         search={search}
         handleChange={handleChange}
