@@ -52,7 +52,7 @@ function Nav() {
         >
           <div className="flex justify-between items-center cursor-pointer m-[5px] hover:text-[#1f2d38] text-[#1e6091]">
             <FaUserAlt className=" pr-[5px] text-3xl" />
-            <p className="hidden md:block">{pageState}</p>
+            <p className="md:hidden lg:block">{pageState}</p>
           </div>
 
           {showAccount && (
@@ -66,13 +66,16 @@ function Nav() {
           onClick={() => {
             navigate("/cart");
           }}
-          className="flex cursor-pointer items-center hover:text-[#1f2d38] text-[#1e6091]"
+          className="flex cursor-pointer justify-center  items-center text-[#fff]  w-[150px] h-[40px] bg-[#1e6091] rounded "
         >
-          <GiShoppingCart className=" pr-[5px] text-4xl" />
-          <p className="hidden md:block">Cart</p>
+          <GiShoppingCart className=" pr-2 text-4xl" />
+          <p className="pr-2 md:hidden lg:block">Cart</p>
+          <div className="w-[30px] h-[30px] bg-white flex justify-center  items-center rounded ">
+            <p className="text-red-500">100</p>{" "}
+          </div>
         </div>
         <FiMenu
-          className=" pr-[5px] text-4xl"
+          className=" pr-[5px] text-4xl md:hidden cursor-pointer text-[#1e6091]"
           onClick={() => {
             setShowMenu(true);
           }}

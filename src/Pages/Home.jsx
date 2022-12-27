@@ -33,7 +33,7 @@ export default function Home() {
       <section className="flex justify-center">
         <div className="max-w-7xl md:h-[60vh] flex md:mt-[15px] ">
           <div className=" rounded  items-start hidden lg:block w-[20%]  bg-black h-[60vh] mr-[15px]"></div>
-          <div className=" w-full  h-[40vh] lg:w-[60%] md:h-[60vh]  flex items-center justify-center mx-auto ">
+          <div className=" w-full  h-[40vh] lg:w-[60%] md:h-[60vh] z-index-1 flex items-center justify-center mx-auto ">
             <Swiper
               spaceBetween={30}
               centeredSlides={true}
@@ -46,22 +46,22 @@ export default function Home() {
               }}
               navigation={true}
               modules={[Autoplay, Pagination, Navigation]}
-              className="mySwiper w-full h-[100%] "
+              className="mySwiper w-full h-[100%] z-index-1 "
             >
               {images.map((image) => {
                 const { img, alt, id } = image;
 
                 return (
-                  <SwiperSlide
+                  <div
                     key={id}
-                    className=" rounded-[10px] flex items-start justify-center h-[40vh] lg:h-[65vh] w-full mx-auto"
+                    className=" rounded-[10px] flex items-start justify-center h-[40vh] lg:h-[65vh] w-full mx-auto z-index-1"
                   >
                     <img
                       src={img}
                       alt={alt}
                       className=" object-contain lg:object-cover rounded-[10px]  h-full min-w-[500px] p-1 lg:p-0  mx-auto"
                     />
-                  </SwiperSlide>
+                  </div>
                 );
               })}
             </Swiper>

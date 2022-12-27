@@ -11,9 +11,9 @@ function Sidebar({ setShowMenu, showMenu }) {
             : " absolute left-0 top-0 h-full w-screen bg-[#1e6091] transform translate-y-[0%] transition all duration-500 ease-in text-white z-index-800000000 overflow-y-hidden  "
         }
       >
-        <div className="w-full h-full">
+        <div className="flex justify-end p-6 ">
           <AiOutlineClose
-            className=" pr-[5px] text-4xl "
+            className=" pr-[5px] text-[40px] text-white "
             onClick={() => {
               setShowMenu(false);
             }}
