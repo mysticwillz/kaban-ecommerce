@@ -6,16 +6,16 @@ import TopSellingItemsData from "./shopData/TopSellingItems";
 function Products() {
   return (
     <>
-      <main className="  flex items-center justify-between  mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
+      <main className="  flex items-center  justify-center md:justify-between mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
         {TopSellingItemsData.map((product) => {
           const { id, img, price, name } = product;
           return (
             <section
               key={id}
-              className="flex flex-col   w-[250px] h-[380px] mb-2 mx-2 lg:mx-0  border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  "
+              className="flex flex-col   w-[250px] h-[380px] mb-2 mx-2 lg:mx-0 border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  "
             >
               <div className="flex  justify-end items-center w-full  mb-2 ">
-                <BsFillSuitHeartFill className="   text-red-400 text-[22px]" />
+                <BsFillSuitHeartFill className="   text-red-500 text-[22px]" />
               </div>
               <div className="flex  justify-center items-center w-full h-[170px]   mb-2 ">
                 <img src={img} alt="product " className=" w-full h-full" />
@@ -24,7 +24,7 @@ function Products() {
               <div className="flex  justify-between items-center w-full  mb-2  ">
                 <h2 className=" text-[20px] font-bold text-[#1f2d38]">
                   $ {price}
-                </h2>{" "}
+                </h2>
                 <strike className="text-[17px] text-[#767879db]">
                   $ {price / 5}
                 </strike>
