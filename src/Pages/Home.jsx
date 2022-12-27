@@ -52,7 +52,7 @@ export default function Home() {
                 const { img, alt, id } = image;
 
                 return (
-                  <div
+                  <SwiperSlide
                     key={id}
                     className=" rounded-[10px] flex items-start justify-center h-[40vh] lg:h-[65vh] w-full mx-auto z-index-1"
                   >
@@ -61,7 +61,7 @@ export default function Home() {
                       alt={alt}
                       className=" object-contain lg:object-cover rounded-[10px]  h-full min-w-[500px] p-1 lg:p-0  mx-auto"
                     />
-                  </div>
+                  </SwiperSlide>
                 );
               })}
             </Swiper>

@@ -82,10 +82,12 @@ function Nav() {
         />
       </nav>
       <Sidebar setShowMenu={setShowMenu} showMenu={showMenu} />
+
       <SearchMobile
         search={search}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
+        className=" opacity-0"
       />
     </div>
   );
