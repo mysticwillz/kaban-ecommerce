@@ -2,14 +2,21 @@ import React from "react";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { FiTrash2 } from "react-icons/fi";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
+  const navigate = useNavigate();
   return (
     <main className=" max-w-7xl mx-auto ">
       <h1 className=" text-[38px] py-6 font-bold text-[#1f2d38]">
         Shopping Cart
       </h1>
-      <div className=" mb-2 text-[18px] rounded border border-[#1e6091] text-[#1e6091] cursor-pointer  hover:text-white hover:bg-[#1e6091] transition-all duration-300 ease-in flex justify-between  px-2 items-center h-[40px] w-[200px] ">
+      <div
+        onClick={() => {
+          navigate("/");
+        }}
+        className=" mb-2 text-[18px] rounded border border-[#1e6091] text-[#1e6091] cursor-pointer  hover:text-white hover:bg-[#1e6091] transition-all duration-300 ease-in flex justify-between  px-2 items-center h-[40px] w-[200px] "
+      >
         <BsFillArrowLeftCircleFill className="  w-[30px]" />{" "}
         <p> Continue Shopping</p>
       </div>

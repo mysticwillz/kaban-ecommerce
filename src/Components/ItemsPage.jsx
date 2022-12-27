@@ -1,19 +1,37 @@
-import React from "react";
+import { useState } from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { TbBuildingStore } from "react-icons/tb";
 import { FaInstagram, FaWhatsapp, FaTwitter } from "react-icons/fa";
 import { MdOutlineLocalShipping } from "react-icons/md";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { BsSuitHeart, BsFillSuitHeartFill } from "react-icons/bs";
 import TopSellingItemsData from "./shopData/TopSellingItems";
 import allData from "./shopData/Data";
+import { useNavigate, useParams } from "react-router-dom";
 
 function ItemsPage() {
+  const [showNum, setShowNum] = useState(false);
+  const navigate = useNavigate();
+  const id = useParams().id;
+  const itemArray = TopSellingItemsData.find((item) => item.id === id);
+  const youMayLike = TopSellingItemsData.filter(
+    (item) => item.id !== id
+  ).filter((item) => item.category === itemArray.category);
   return (
     <main className="max-w-7xl mx-auto ">
-      <section className="flex items-center justify-between w-full pt-10 h-screen ">
+      <div
+        onClick={() => {
+          navigate("/");
+        }}
+        className=" mb-2 text-[18px] rounded border border-[#1e6091] text-[#1e6091] cursor-pointer mt-10 hover:text-white hover:bg-[#1e6091] transition-all duration-300 ease-in flex justify-between  px-2 items-center h-[40px] w-[200px] "
+      >
+        <BsFillArrowLeftCircleFill className="  w-[30px]" />{" "}
+        <p> Continue Shopping</p>
+      </div>
+      <section className="flex items-center justify-between w-full pt-4 h-screen ">
         <div className="flex flex-col items-center justify-center w-[50%]   ">
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmR4jkEpjxw8UNqthaL6bcKZTivc8444J5vA&usqp=CAU"
+            src={itemArray.img}
             alt="item description"
             className="w-[500px] h-[400px]"
           />
@@ -42,13 +60,13 @@ function ItemsPage() {
           </div>
         </div>
         <article className=" w-[50%] h-full ">
-          <t2 className="text-[38px] font-bold py-6 ">
-            Oraimo Wireless Earbuds
-          </t2>
+          <t2 className="text-[38px] font-bold py-6 ">{itemArray.name}</t2>
 
           <div className="flex items-center  text-[18px] border-y w-full py-6 ">
-            <t5 className=" text-[32px] ">$800</t5>
-            <strike className="text-[22px] text-[#767879db] pl-6">$50</strike>
+            <t5 className=" text-[32px] ">${itemArray.price}</t5>
+            <strike className="text-[22px] text-[#767879db] pl-6">
+              ${(itemArray.price / 5) * 6}
+            </strike>
           </div>
           <div className="flex items-center py-6  ">
             <h4>Quantity:</h4>
@@ -59,8 +77,13 @@ function ItemsPage() {
             </div>
           </div>
           <p className="text-[#767879db] ">Call us for bulk purchases:</p>
-          <p className=" text-[18px] font-bold cursor-pointer border-b pb-6 ">
-            Click here to show phone number
+          <p
+            onClick={() => {
+              setShowNum(!showNum);
+            }}
+            className=" text-[18px] font-bold cursor-pointer border-b pb-6 "
+          >
+            {showNum ? `${itemArray.price}` : "Click here to show phone number"}
           </p>
           <button className="text-[18px] rounded my-6 border border-[#1e6091] bg-[#1e6091] text-white hover:bg-[#fff] hover:text-[#1e6091] transition-all duration-300 ease-in flex justify-center items-center h-[40px] w-full">
             Purchase Now
@@ -83,9 +106,9 @@ function ItemsPage() {
           </p>
           <p className=" text-[12px] ">Share With Friends</p>
           <div className="flex items-center ">
-            <FaWhatsapp className=" text-[30px]  text-[#1e6091] cursor-pointer" />
-            <FaTwitter className=" text-[60px]  px-4 cursor-pointer text-[#1e6091]" />
-            <FaInstagram className=" text-[30px] cursor-pointer   text-[#1e6091]" />
+            <FaWhatsapp className=" text-[30px]  text-[#5FFC7B] cursor-pointer" />
+            <FaTwitter className=" text-[60px]  px-4 cursor-pointer text-[#00acee]" />
+            <FaInstagram className=" text-[30px] cursor-pointer   text-[#e64c4c]" />
           </div>
         </article>
       </section>
@@ -94,18 +117,17 @@ function ItemsPage() {
         <t2 className=" text-[30px] font-bold text-[#1e6091] ">Description</t2>
         <div className=" text-[18px] w-[600px] ">
           <p className=" text-[#767879db] text-[18px] w-[600px] mb-[10px]">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
-            eius eaque incidunt suscipit, consectetur saepe facilis? Distinctio
-            velit ducimus quae inventore in voluptatem? Nostrum reprehenderit
-            modi, repellendus maiores nihil nulla.
+            {itemArray.para}
           </p>
         </div>
       </section>
-      <t2 className=" text-[30px] font-bold text-[#1e6091]  ">
-        Similar Products You May Like
-      </t2>
+      {youMayLike.length > 0 && (
+        <t2 className=" text-[30px] font-bold text-[#1e6091]  ">
+          Similar Products You May Like
+        </t2>
+      )}
       <section className="  flex items-center justify-between flex-wrap  mx-auto  w-full max-w-7xl    mt-[10px]">
-        {allData.map((product) => {
+        {youMayLike.map((product) => {
           const { id, img, price, name } = product;
           return (
             <div

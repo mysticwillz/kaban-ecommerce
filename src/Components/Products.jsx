@@ -1,9 +1,11 @@
 import React from "react";
 import { BsSuitHeart, BsFillSuitHeartFill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 import TopSellingItemsData from "./shopData/TopSellingItems";
 //  <BsSuitHeart className="text-red-600 text-[22px]" />
 // text-[#1f2d38] text-[#1e6091]
 function Products() {
+  const navigate = useNavigate();
   return (
     <>
       <main className="  flex items-center  justify-center md:justify-between mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
@@ -12,6 +14,9 @@ function Products() {
           return (
             <section
               key={id}
+              onClick={() => {
+                navigate(`/item/${id}`);
+              }}
               className="flex flex-col   w-[250px] h-[380px] mb-2 mx-2 lg:mx-0 border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  "
             >
               <div className="flex  justify-end items-center w-full  mb-2 ">
