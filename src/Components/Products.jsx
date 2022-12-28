@@ -9,6 +9,13 @@ import { cartActions } from "../Store/CartSlice";
 function Products() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const handleNavigate = (e, id) => {
+    if (e.target.type === "button") {
+      return;
+    } else {
+      navigate(`/item/${id}`);
+    }
+  };
   const addToCart = (name, price, id) => {
     dispatch(
       cartActions.addToCart({
@@ -26,8 +33,8 @@ function Products() {
           return (
             <section
               key={id}
-              onClick={() => {
-                navigate(`/item/${id}`);
+              onClick={(e) => {
+                handleNavigate(e, id);
               }}
               className="flex flex-col   w-[250px] h-[380px] mb-2 mx-2 lg:mx-0 border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  "
             >
@@ -53,6 +60,7 @@ function Products() {
                 </span>
               </p>
               <button
+                type="button"
                 onClick={() => {
                   addToCart(name, price, id);
                 }}
