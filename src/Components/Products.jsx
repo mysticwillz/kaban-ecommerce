@@ -1,11 +1,23 @@
 import React from "react";
 import { BsSuitHeart, BsFillSuitHeartFill } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import TopSellingItemsData from "./shopData/TopSellingItems";
+import { cartActions } from "../Store/CartSlice";
 //  <BsSuitHeart className="text-red-600 text-[22px]" />
 // text-[#1f2d38] text-[#1e6091]
 function Products() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const addToCart = (name, price, id) => {
+    dispatch(
+      cartActions.addToCart({
+        name,
+        price,
+        id,
+      })
+    );
+  };
   return (
     <>
       <main className="  flex items-center  justify-center md:justify-between mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
@@ -40,7 +52,12 @@ function Products() {
                   Willz Wonderland
                 </span>
               </p>
-              <button className="text-[18px] rounded border border-[#1e6091] text-[#1e6091] hover:text-white hover:bg-[#1e6091] transition-all duration-300 ease-in flex justify-center items-center h-[40px] w-full">
+              <button
+                onClick={() => {
+                  addToCart(name, price, id);
+                }}
+                className="text-[18px] rounded border border-[#1e6091] text-[#1e6091] hover:text-white hover:bg-[#1e6091] transition-all duration-300 ease-in flex justify-center items-center h-[40px] w-full"
+              >
                 Add to cart
               </button>
             </section>

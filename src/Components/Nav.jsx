@@ -9,6 +9,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import HandleAccount from "./HandleAccount";
 import { SearchMobile, SearchDesktop } from "./Search";
 import Sidebar from "./Sidebar";
+import { useSelector } from "react-redux";
 
 function Nav() {
   const [search, setSearch] = useState("");
@@ -34,8 +35,10 @@ function Nav() {
 
   const navigate = useNavigate();
 
+  const quantity = useSelector((state) => state.cart.totalQuantity);
+
   return (
-    <div className="w-full text-[#424b52] h-2xl bg-[#fff] shadow-lg ">
+    <div className="w-full text-[#424b52] h-2xl bg-[#fff] shadow-lg sticky left-0 top-0 z-10">
       <nav className="max-w-7xl flex justify-between items-center mx-auto p-4">
         <h1 className=" text-[2rem] md:text-[2.3rem]">Kaban</h1>
 
@@ -71,7 +74,7 @@ function Nav() {
           <GiShoppingCart className=" pr-2 text-4xl" />
           <p className="pr-2 md:hidden lg:block">Cart</p>
           <div className="w-[30px] h-[30px] bg-white flex justify-center  items-center rounded ">
-            <p className="text-red-500">100</p>{" "}
+            <p className="text-red-500">{quantity}</p>{" "}
           </div>
         </div>
         <FiMenu
@@ -87,7 +90,6 @@ function Nav() {
         search={search}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        className=" opacity-0"
       />
     </div>
   );
