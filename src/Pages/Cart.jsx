@@ -10,6 +10,10 @@ import EmptyCart from "../Components/EmptyCart";
 function Cart() {
   const navigate = useNavigate();
   const cartList = useSelector((state) => state.cart.itemsList);
+  let total = 0;
+  cartList.forEach((item) => {
+    total += item.totalPrice;
+  });
   const dispatch = useDispatch();
   const addToCart = (name, price, id) => {
     dispatch(
@@ -126,11 +130,11 @@ function Cart() {
           </div>
           <div className="   border-b flex justify-between items-start  w-[350px] p-2 ">
             <p>Subtotal:</p>
-            <p className=" ">₦281,499</p>
+            <p className=" ">${total}</p>
           </div>
           <div className="   border-b flex justify-between items-start  w-[350px] p-2 ">
             <t4 className=" text-[22px] font-bold">Total:</t4>
-            <t4 className=" text-[22px] font-bold">₦281,499</t4>
+            <t4 className=" text-[22px] font-bold">${total}</t4>
           </div>
           <div className="    flex justify-end items-start  w-[350px] px-2 ">
             <p className=" text-[12px] text-end text-red-500 ">
