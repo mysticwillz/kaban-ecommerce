@@ -16,12 +16,13 @@ function Products() {
       navigate(`/item/${id}`);
     }
   };
-  const addToCart = (name, price, id) => {
+  const addToCart = (name, price, id, img) => {
     dispatch(
       cartActions.addToCart({
         name,
         price,
         id,
+        img,
       })
     );
   };
@@ -62,7 +63,7 @@ function Products() {
               <button
                 type="button"
                 onClick={() => {
-                  addToCart(name, price, id);
+                  addToCart(name, price, id, img);
                 }}
                 className="text-[18px] rounded border border-[#1e6091] text-[#1e6091] hover:text-white hover:bg-[#1e6091] transition-all duration-300 ease-in flex justify-center items-center h-[40px] w-full"
               >
