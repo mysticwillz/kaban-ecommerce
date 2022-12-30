@@ -10,7 +10,6 @@ import HandleAccount from "./HandleAccount";
 import { SearchMobile, SearchDesktop } from "./Search";
 import Sidebar from "./Sidebar";
 import { useSelector } from "react-redux";
-import { useAuthStatus } from "../hooks/useAuthStatus";
 
 function Nav() {
   const [search, setSearch] = useState("");
@@ -20,7 +19,6 @@ function Nav() {
   const [showMenu, setShowMenu] = useState(false);
 
   const auth = getAuth();
-    const { loggedIn } = useAuthStatus();
 
   useEffect(
     () =>
@@ -43,7 +41,8 @@ function Nav() {
     <div className="w-full text-[#424b52] h-2xl bg-[#fff] shadow-lg sticky left-0 top-0 z-10">
       <nav className="max-w-7xl flex justify-between items-center mx-auto p-4">
         <h1 className=" text-[2rem] md:text-[2.3rem]">Kaban</h1>
-        {loggedIn ? (
+
+        <div className=" w-[60px] hidden md:block">
           <p
             onClick={() => {
               navigate("/profile");
@@ -53,27 +52,7 @@ function Nav() {
             {" "}
             List a product{" "}
           </p>
-        ) : (
-          <div  className=" w-[60px] "></div>
-          <p
-            onClick={() => {
-              navigate("/sign-up");
-            }}
-            className=" text-[1rem] hidden md:block cursor-pointer"
-          >
-            {" "}
-            Become a seller{" "}
-          </p>
-        )}
-        <p
-          onClick={() => {
-            navigate("/partnership");
-          }}
-          className=" text-[1rem] hidden md:block cursor-pointer"
-        >
-          {" "}
-          Become a seller{" "}
-        </p>
+        </div>
 
         <SearchDesktop
           search={search}

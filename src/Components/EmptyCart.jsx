@@ -12,7 +12,7 @@ function EmptyCart() {
           onClick={() => {
             navigate("/");
           }}
-          className=" mb-2 text-[18px] rounded border hover:border-[#1e6091] bg-[#1e6091] hover:text-[#1e6091] cursor-pointer  text-white hover:bg-[#fff] transition-all duration-300 ease-in flex justify-between  px-2 items-center h-[40px] w-[200px] "
+          className=" mb-2 text-[18px] rounded hover:border hover:border-[#1e6091] bg-[#1e6091] hover:text-[#1e6091] cursor-pointer  text-white hover:bg-[#fff] transition-all duration-300 ease-in flex justify-between  px-2 items-center h-[40px] w-[200px] "
         >
           <BsFillArrowLeftCircleFill className="  w-[30px]" />
           <p> Continue Shopping</p>
