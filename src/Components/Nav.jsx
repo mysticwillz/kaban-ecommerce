@@ -42,6 +42,16 @@ function Nav() {
       <nav className="max-w-7xl flex justify-between items-center mx-auto p-4">
         <h1 className=" text-[2rem] md:text-[2.3rem]">Kaban</h1>
 
+        <p
+          onClick={() => {
+            navigate("/partnership");
+          }}
+          className=" text-[1rem] hidden md:block"
+        >
+          {" "}
+          Become a partner{" "}
+        </p>
+
         <SearchDesktop
           search={search}
           handleChange={handleChange}
