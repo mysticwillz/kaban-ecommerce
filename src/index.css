@@ -6,7 +6,7 @@
 
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #fff;
+  background-color: rgba(158, 218, 228, 0.885);
   position: relative;
   overflow-x: hidden;
 }

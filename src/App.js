@@ -14,7 +14,7 @@ import PrivateRoute from "./Components/PrivateRoute";
 import ItemsPage from "./Components/ItemsPage";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "./Store/getThunk";
-import BecomePartner from "./Pages/BecomePartner";
+
 let isFirstRender = true;
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -54,7 +54,7 @@ function App() {
         <Route path="/item/:id" element={<ItemsPage />} />
 
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/partnership " element={<BecomePartner />} />
+
         <Route path="/cart" element={<Cart />} />
         <Route path="/sign-up" element={<Signup />} />
       </Routes>
