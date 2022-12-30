@@ -45,9 +45,9 @@ function Nav() {
         <div className=" w-[60px] hidden md:block">
           <p
             onClick={() => {
-              navigate("/profile");
+              navigate("/create-listing");
             }}
-            className=" text-[1rem] hidden md:block cursor-pointer"
+            className=" text-[1rem] hidden md:block cursor-pointer  hover:text-[#1f2d38] text-[#1e6091] "
           >
             {" "}
             List a product{" "}

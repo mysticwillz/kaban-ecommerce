@@ -1,8 +1,9 @@
 import React from "react";
 
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import TopSellingItemsData from "./shopData/TopSellingItems";
+
 import { cartActions } from "../Store/CartSlice";
 
 function Products() {
@@ -37,7 +38,7 @@ function Products() {
               onClick={(e) => {
                 handleNavigate(e, id);
               }}
-              className="flex flex-col   w-[250px] h-[380px] mb-2 mx-2 lg:mx-0 border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  "
+              className="flex flex-col   w-[250px] h-[350px] mb-2 mx-2 lg:mx-0 border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  "
             >
               <div className="flex  justify-center items-center w-full h-[170px]   mb-2 ">
                 <img src={img} alt="product " className=" w-full h-full" />

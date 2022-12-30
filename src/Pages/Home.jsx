@@ -68,8 +68,21 @@ export default function Home() {
           </div>
 
           <div className=" rounded-[10px]  hidden ml-[15px] lg:block w-[20%] bg-white h-[60vh]  flex-col items-start">
-            <div className="w-full h-[50%] rounded-t  bg-white"></div>
-            <div className="w-full h-[50%] rounded-b bg-[red]"></div>
+            <div className="w-full h-[50%] rounded-t  ">
+              <img
+                src={six}
+                alt="sub hero"
+                className=" rounded-t h-full w-full"
+              />
+            </div>
+            <div className="w-full h-[50%] rounded-b ">
+              {" "}
+              <img
+                src={three}
+                alt="sub hero"
+                className="rounded-b  h-full w-full"
+              />
+            </div>
           </div>
         </div>
       </section>

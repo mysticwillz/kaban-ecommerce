@@ -22,9 +22,11 @@ function CreateListing() {
     img: {},
     price: "",
     para: "",
+    tel: "",
+    storeName: "",
     category: "",
   });
-  const { name, img, price, para, category } = listData;
+  const { name, img, price, para, category, tel, storeName } = listData;
 
   const handleChange = (e) => {
     if (e.target.files) {
@@ -51,9 +53,9 @@ function CreateListing() {
       return;
     }
 
-    if (img.length !== 4) {
+    if (img.length > 4) {
       setLoading(false);
-      toast.error("please upload the correct number or images");
+      toast.error(" images should not be more than four");
       return;
     }
 
@@ -168,14 +170,12 @@ function CreateListing() {
         <div className="flex flex-col whitespace-normal px-4 items-start mt-[20px]">
           <p className="font-bold pr-2 whitespace-nowrap">Display Images:</p>
           <p className="font-bold text-sm pr-2 whitespace-nowrap">
-            The first image will be the cover image (must upload 4 images.
-            max(4))
+            The first image will be the cover image (4 images max)
           </p>
           <input
             type="file"
             id="img"
             max="4"
-            min="4"
             accept=".jpg, .png, .jpeg"
             multiple
             required
@@ -206,6 +206,37 @@ function CreateListing() {
             <option className=" w-[60%] text-[#424b52]  ">watch</option>
             <option className=" w-[60%] text-[#424b52]  ">shoes</option>
           </select>
+        </div>
+        <div className="w-full   flex  flex-wrap md:flex-nowrap justify-between items-center mt-[20px]  px-4 ">
+          <div className="flex flex-col md:flex-row w-full md:w-[49%] items-start  md:items-center">
+            <label htmlFor="name" className="font-bold pr-2 ">
+              Store Name:
+            </label>
+            <input
+              type="text"
+              required
+              id="name"
+              onChange={handleChange}
+              value={storeName}
+              placeholder="Enter Store Name"
+              className="w-full rounded border-0 focus:border-[#1e6091] "
+            />
+          </div>
+          <div className="flex md:items-center flex-col md:flex-row w-full items-start md:w-[49%]  ">
+            <label htmlFor="price" className="font-bold pr-2 ">
+              Phone:
+            </label>
+            <input
+              type="tel"
+              id="price"
+              required
+              min="0"
+              onChange={handleChange}
+              value={tel}
+              placeholder="Enter Your Phone Number"
+              className="w-full rounded border-0 focus:border-[#1e6091] "
+            />
+          </div>
         </div>
 
         <div className=" w-full px-4 mt-[20px]">
