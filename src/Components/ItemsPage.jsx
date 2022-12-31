@@ -1,16 +1,22 @@
 import { useState } from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { TbBuildingStore } from "react-icons/tb";
-import { FaInstagram, FaWhatsapp, FaTwitter } from "react-icons/fa";
+import { FaTwitter, FaWhatsapp, FaFacebook } from "react-icons/fa";
 import { MdOutlineLocalShipping } from "react-icons/md";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 
 import TopSellingItemsData from "./shopData/TopSellingItems";
 
 import { useNavigate, useParams } from "react-router-dom";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+} from "react-share";
 
 function ItemsPage() {
   const [showNum, setShowNum] = useState(false);
+  const currentPageUrl = window.location.href;
   const navigate = useNavigate();
   const id = useParams().id;
   const itemArray = TopSellingItemsData.find((item) => item.id === id);
@@ -106,9 +112,16 @@ function ItemsPage() {
           </p>
           <p className=" text-[12px] ">Share With Friends</p>
           <div className="flex items-center ">
-            <FaWhatsapp className=" text-[30px]  text-[#5FFC7B] cursor-pointer" />
-            <FaTwitter className=" text-[60px]  px-4 cursor-pointer text-[#00acee]" />
-            <FaInstagram className=" text-[30px] cursor-pointer   text-[#e64c4c]" />
+            <WhatsappShareButton url={currentPageUrl}>
+              <FaWhatsapp className=" text-[30px]  text-[#5FFC7B] cursor-pointer" />
+            </WhatsappShareButton>
+            <TwitterShareButton url={currentPageUrl}>
+              <FaTwitter className=" text-[60px]  px-4 cursor-pointer text-[#00acee]" />
+            </TwitterShareButton>
+
+            <FacebookShareButton url={currentPageUrl}>
+              <FaFacebook className=" text-[30px] cursor-pointer   text-[#3759ca]" />
+            </FacebookShareButton>
           </div>
         </article>
       </section>
