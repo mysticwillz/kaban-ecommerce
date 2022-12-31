@@ -40,7 +40,14 @@ function Nav() {
   return (
     <div className="w-full text-[#424b52] h-2xl bg-[#fff] shadow-lg sticky left-0 top-0 z-10">
       <nav className="max-w-7xl flex justify-between items-center mx-auto p-4">
-        <h1 className=" text-[2rem] md:text-[2.3rem]">Kaban</h1>
+        <h1
+          onClick={() => {
+            navigate("/");
+          }}
+          className=" text-[2rem] md:text-[2.3rem] cursor-pointer "
+        >
+          Kaban
+        </h1>
 
         <div className=" w-[60px] hidden md:block">
           <p

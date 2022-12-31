@@ -12,6 +12,7 @@ import { v4 as uuidv4 } from "uuid";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../Components/Firebase";
 import { useNavigate } from "react-router-dom";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 function CreateListing() {
   const auth = getAuth();
   const navigate = useNavigate();
@@ -130,140 +131,154 @@ function CreateListing() {
   }
 
   return (
-    <main className="max-w-2xl mx-auto mt-[10px]">
-      <header className="flex items-center justify-center my-[10px] ">
-        <h1 className="text-center text-[2.3rem] font-bold ">Create Listing</h1>
-      </header>
-      <form onSubmit={handleSubmit} className="flex flex-col mt-3  w-full">
-        <div className="w-full   flex  flex-wrap md:flex-nowrap justify-between items-center  px-4 ">
-          <div className="flex flex-col md:flex-row w-full md:w-[49%] items-start  md:items-center">
-            <label htmlFor="name" className="font-bold pr-2 ">
-              Name:
-            </label>
-            <input
-              type="text"
-              required
-              id="name"
-              onChange={handleChange}
-              value={name}
-              placeholder="Enter Product Name"
-              className="w-full rounded border-0 focus:border-[#1e6091] "
-            />
+    <>
+      {" "}
+      <div
+        onClick={() => {
+          navigate("/profile");
+        }}
+        className=" ml-4 mb-2 text-[18px] rounded border border-[#1e6091] text-[#1e6091] cursor-pointer mt-10 hover:text-white hover:bg-[#1e6091] transition-all duration-300 ease-in flex justify-between  px-2 items-center h-[40px] w-[180px] "
+      >
+        <BsFillArrowLeftCircleFill className="  w-[30px]" />{" "}
+        <p> Back To Profile </p>
+      </div>
+      <main className="max-w-2xl mx-auto mt-[10px]">
+        <header className="flex items-center justify-center my-[10px] ">
+          <h1 className="text-center text-[2.3rem] font-bold ">
+            Create Listing
+          </h1>
+        </header>
+        <form onSubmit={handleSubmit} className="flex flex-col mt-3  w-full">
+          <div className="w-full   flex  flex-wrap md:flex-nowrap justify-between items-center  px-4 ">
+            <div className="flex flex-col md:flex-row w-full md:w-[49%] items-start  md:items-center">
+              <label htmlFor="name" className="font-bold pr-2 ">
+                Name:
+              </label>
+              <input
+                type="text"
+                required
+                id="name"
+                onChange={handleChange}
+                value={name}
+                placeholder="Enter Product Name"
+                className="w-full rounded border-0 focus:border-[#1e6091] "
+              />
+            </div>
+            <div className="flex md:items-center flex-col md:flex-row w-full items-start md:w-[49%]  ">
+              <label htmlFor="price" className="font-bold pr-2 ">
+                Price:
+              </label>
+              <input
+                type="number"
+                id="price"
+                required
+                min="0"
+                onChange={handleChange}
+                value={price}
+                placeholder="1000"
+                className="w-full rounded border-0 focus:border-[#1e6091] "
+              />
+            </div>
           </div>
-          <div className="flex md:items-center flex-col md:flex-row w-full items-start md:w-[49%]  ">
-            <label htmlFor="price" className="font-bold pr-2 ">
-              Price:
-            </label>
-            <input
-              type="number"
-              id="price"
-              required
-              min="0"
-              onChange={handleChange}
-              value={price}
-              placeholder="1000"
-              className="w-full rounded border-0 focus:border-[#1e6091] "
-            />
-          </div>
-        </div>
 
-        <div className="flex flex-col whitespace-normal px-4 items-start mt-[20px]">
-          <p className="font-bold pr-2 whitespace-nowrap">Display Images:</p>
-          <p className="font-bold text-sm pr-2 whitespace-nowrap">
-            The first image will be the cover image (4 images max)
-          </p>
-          <input
-            type="file"
-            id="img"
-            max="4"
-            accept=".jpg, .png, .jpeg"
-            multiple
-            required
-            onChange={handleChange}
-            className=" w-full  rounded border-0 focus:border-[#1e6091] px-3 py-1.5 bg-white text-[#424b52] "
-          />
-        </div>
-        <div className="w-full px-4 mt-[20px]">
-          <label htmlFor="category" className="font-bold ">
-            Category
-          </label>
-          <select
-            id="category"
-            name={category}
-            onChange={handleChange}
-            required
-            value={category}
-            className=" border-0 rounded  w-full  "
-          >
-            <option className=" w-[60%] text-[#424b52]  ">
-              select a category
-            </option>
-            <option className=" w-[60%] text-[#424b52]  ">phone</option>
-            <option className=" w-[60%] text-[#424b52]  ">laptop</option>
-            <option className=" w-[60%] text-[#424b52]  ">camera</option>
-            <option className=" w-[60%] text-[#424b52]  ">bags</option>
-            <option className=" w-[60%] text-[#424b52]  ">clothing</option>
-            <option className=" w-[60%] text-[#424b52]  ">watch</option>
-            <option className=" w-[60%] text-[#424b52]  ">shoes</option>
-          </select>
-        </div>
-        <div className="w-full   flex  flex-wrap md:flex-nowrap justify-between items-center mt-[20px]  px-4 ">
-          <div className="flex flex-col md:flex-row w-full md:w-[49%] items-start  md:items-center">
-            <label htmlFor="name" className="font-bold pr-2 ">
-              Store Name:
-            </label>
+          <div className="flex flex-col whitespace-normal px-4 items-start mt-[20px]">
+            <p className="font-bold pr-2 whitespace-nowrap">Display Images:</p>
+            <p className="font-bold text-sm pr-2 whitespace-nowrap">
+              The first image will be the cover image (4 images max)
+            </p>
             <input
-              type="text"
+              type="file"
+              id="img"
+              max="4"
+              accept=".jpg, .png, .jpeg"
+              multiple
               required
-              id="name"
               onChange={handleChange}
-              value={storeName}
-              placeholder="Enter Store Name"
-              className="w-full rounded border-0 focus:border-[#1e6091] "
+              className=" w-full  rounded border-0 focus:border-[#1e6091] px-3 py-1.5 bg-white text-[#424b52] "
             />
           </div>
-          <div className="flex md:items-center flex-col md:flex-row w-full items-start md:w-[49%]  ">
-            <label htmlFor="price" className="font-bold pr-2 ">
-              Phone:
+          <div className="w-full px-4 mt-[20px]">
+            <label htmlFor="category" className="font-bold ">
+              Category
             </label>
-            <input
-              type="tel"
-              id="price"
-              required
-              min="0"
+            <select
+              id="category"
+              name={category}
               onChange={handleChange}
-              value={tel}
-              placeholder="Enter Your Phone Number"
-              className="w-full rounded border-0 focus:border-[#1e6091] "
-            />
+              required
+              value={category}
+              className=" border-0 rounded  w-full  "
+            >
+              <option className=" w-[60%] text-[#424b52]  ">
+                select a category
+              </option>
+              <option className=" w-[60%] text-[#424b52]  ">phone</option>
+              <option className=" w-[60%] text-[#424b52]  ">laptop</option>
+              <option className=" w-[60%] text-[#424b52]  ">camera</option>
+              <option className=" w-[60%] text-[#424b52]  ">bags</option>
+              <option className=" w-[60%] text-[#424b52]  ">clothing</option>
+              <option className=" w-[60%] text-[#424b52]  ">watch</option>
+              <option className=" w-[60%] text-[#424b52]  ">shoes</option>
+            </select>
           </div>
-        </div>
+          <div className="w-full   flex  flex-wrap md:flex-nowrap justify-between items-center mt-[20px]  px-4 ">
+            <div className="flex flex-col md:flex-row w-full md:w-[49%] items-start  md:items-center">
+              <label htmlFor="name" className="font-bold pr-2 ">
+                Store Name:
+              </label>
+              <input
+                type="text"
+                required
+                id="name"
+                onChange={handleChange}
+                value={storeName}
+                placeholder="Enter Store Name"
+                className="w-full rounded border-0 focus:border-[#1e6091] "
+              />
+            </div>
+            <div className="flex md:items-center flex-col md:flex-row w-full items-start md:w-[49%]  ">
+              <label htmlFor="price" className="font-bold pr-2 ">
+                Phone:
+              </label>
+              <input
+                type="tel"
+                id="price"
+                required
+                min="0"
+                onChange={handleChange}
+                value={tel}
+                placeholder="Enter Your Phone Number"
+                className="w-full rounded border-0 focus:border-[#1e6091] "
+              />
+            </div>
+          </div>
 
-        <div className=" w-full px-4 mt-[20px]">
-          <p htmlFor="para" className="font-bold ">
-            Description
-          </p>
-          <textarea
-            onChange={handleChange}
-            id="para"
-            value={para}
-            required
-            rows="6"
-            placeholder="Enter Product Description here"
-            className=" border-0 focus:border-[#1e6091] w-full rounded px-4"
-          ></textarea>
-        </div>
+          <div className=" w-full px-4 mt-[20px]">
+            <p htmlFor="para" className="font-bold ">
+              Description
+            </p>
+            <textarea
+              onChange={handleChange}
+              id="para"
+              value={para}
+              required
+              rows="6"
+              placeholder="Enter Product Description here"
+              className=" border-0 focus:border-[#1e6091] w-full rounded px-4"
+            ></textarea>
+          </div>
 
-        <div className="flex items-center justify-center px-4  my-[15px]">
-          <button
-            type="submit"
-            className="w-full rounded border-0 h-[40px] outline-0 hover:bg-[#424b52] transition all duration-150 ease-in-out bg-[#1e6091] text-white uppercase flex items-center justify-center"
-          >
-            Publish your product
-          </button>
-        </div>
-      </form>
-    </main>
+          <div className="flex items-center justify-center px-4  my-[15px]">
+            <button
+              type="submit"
+              className="w-full rounded border-0 h-[40px] outline-0 hover:bg-[#424b52] transition all duration-150 ease-in-out bg-[#1e6091] text-white uppercase flex items-center justify-center"
+            >
+              Publish your product
+            </button>
+          </div>
+        </form>
+      </main>
+    </>
   );
 }
 

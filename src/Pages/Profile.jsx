@@ -5,6 +5,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import MyListings from "../Components/MyListings";
 
 export default function Profile() {
@@ -50,6 +51,15 @@ export default function Profile() {
   };
   return (
     <section>
+      <div
+        onClick={() => {
+          navigate("/");
+        }}
+        className="ml-4 mb-2 text-[18px] rounded border border-[#1e6091] text-[#1e6091] cursor-pointer mt-10 hover:text-white hover:bg-[#1e6091] transition-all duration-300 ease-in flex justify-between  px-2 items-center h-[40px] w-[200px] "
+      >
+        <BsFillArrowLeftCircleFill className="  w-[30px]" />{" "}
+        <p> Continue Shopping</p>
+      </div>
       <h1 className="text-center font-bold  text-[2rem] mt-[15px]">
         My Profile
       </h1>
