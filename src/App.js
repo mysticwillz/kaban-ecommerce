@@ -8,36 +8,13 @@ import Login from "./Pages/Login";
 import CreateListing from "./Pages/CreateListing";
 import Profile from "./Pages/Profile";
 import Signup from "./Pages/Signup";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PrivateRoute from "./Components/PrivateRoute";
 import ItemsPage from "./Components/ItemsPage";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "./Store/getThunk";
+import Footer from "./Layouts/Footer";
 
-let isFirstRender = true;
 function App() {
-  const cart = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchData());
-  }, [dispatch]);
-  useEffect(() => {
-    const request = async () => {
-      JSON.stringify(localStorage.setItem("Data", cart));
-
-      toast.success("item added successfully ");
-    };
-
-    if (isFirstRender) {
-      isFirstRender = false;
-      return;
-    }
-    if (cart.changed) {
-      request();
-    }
-  }, [cart]);
   return (
     <>
       <Nav />
@@ -71,6 +48,7 @@ function App() {
         pauseOnHover
         theme="dark"
       />
+      <Footer />
     </>
   );
 }
