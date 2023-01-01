@@ -5,6 +5,8 @@ import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
 import GoogleAuth from "../Components/GoogleAuth";
+import { useDispatch } from "react-redux";
+import { authActions } from "../Store/AuthSlice";
 
 function Login() {
   const [login, setLogin] = useState({ email: "", password: "" });
@@ -12,7 +14,10 @@ function Login() {
 
   const handleChange = (e) =>
     setLogin((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-
+  const dispatch = useDispatch();
+  const authChange = () => {
+    dispatch(authActions.authChange());
+  };
   async function handleSubmit(e) {
     e.preventDefault();
     try {
@@ -24,7 +29,8 @@ function Login() {
       );
 
       if (userCredential.user) {
-        navigate("/profile");
+        authChange();
+        navigate("/");
       }
     } catch (error) {
       toast.error("user not verified");

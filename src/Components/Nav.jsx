@@ -18,6 +18,8 @@ function Nav() {
   const [showAccount, setShowAccount] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
+  const authRefresh = useSelector((state) => state.auth.changed);
+
   const auth = getAuth();
 
   useEffect(
@@ -27,7 +29,7 @@ function Nav() {
           ? setPageState(`Hi, ${auth.currentUser.displayName}`)
           : setPageState("login")
       ),
-    []
+    [authRefresh]
   );
 
   const handleChange = (e) => setSearch(e.target.value);

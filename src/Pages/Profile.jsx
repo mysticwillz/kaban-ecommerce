@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import MyListings from "../Components/MyListings";
+import { useDispatch } from "react-redux";
+import { authActions } from "../Store/AuthSlice";
 
 export default function Profile() {
   const auth = getAuth();
@@ -22,7 +24,10 @@ export default function Profile() {
     auth.signOut();
     navigate("/");
   }
-
+  const dispatch = useDispatch();
+  const authChange = () => {
+    dispatch(authActions.authChange());
+  };
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -44,6 +49,8 @@ export default function Profile() {
           email: email,
         });
       }
+      authChange();
+
       toast.success("profile details updated");
     } catch (error) {
       toast.error("profile update failed");

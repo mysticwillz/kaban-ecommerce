@@ -11,8 +11,14 @@ import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 
 import GoogleAuth from "../Components/GoogleAuth";
+import { useDispatch } from "react-redux";
+import { authActions } from "../Store/AuthSlice";
 
 function Signup() {
+  const dispatch = useDispatch();
+  const authChange = () => {
+    dispatch(authActions.authChange());
+  };
   const [signup, setSignup] = useState({
     name: "",
     email: "",
@@ -24,7 +30,7 @@ function Signup() {
   const handleChange = (e) => {
     setSignup((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
-
+  const navigate = useNavigate();
   async function handleSubmit(e) {
     e.preventDefault();
     try {
@@ -44,14 +50,14 @@ function Signup() {
       signupCopy.timestamp = serverTimestamp();
 
       await setDoc(doc(db, "users", user.uid), signupCopy);
-
-      navigate("/profile");
+      authChange();
+      toast.success(" signing up successful ");
+      navigate("/");
     } catch (error) {
       toast.error("sorry there was a problem while signing up");
     }
   }
 
-  const navigate = useNavigate();
   return (
     <section className="flex justify-center w-full mx-auto p-[30px] text-[#424b52] flex-wrap max-w-6xl">
       <div className="flex flex-col items-center shadow-lg w-full md:w-[40%] lg:w-[50%] p-[25px]">
