@@ -9,11 +9,19 @@ import { cartActions } from "../Store/CartSlice";
 function Products() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleNavigate = (e, id) => {
+  const handleNavigate = (e, name, price, id, img) => {
     if (e.target.type === "button") {
       return;
     } else {
       navigate(`/item/${id}`);
+      dispatch(
+        cartActions.addToCart({
+          name,
+          price,
+          id,
+          img,
+        })
+      );
     }
   };
   const addToCart = (name, price, id, img) => {
@@ -36,7 +44,7 @@ function Products() {
             <section
               key={id}
               onClick={(e) => {
-                handleNavigate(e, id);
+                handleNavigate(e, name, price, id, img);
               }}
               className="flex flex-col   w-[250px] h-[350px] mb-2 mx-2 lg:mx-0 border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  "
             >

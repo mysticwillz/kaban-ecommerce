@@ -13,16 +13,34 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
 } from "react-share";
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../Store/CartSlice";
 
 function ItemsPage() {
   const [showNum, setShowNum] = useState(false);
   const currentPageUrl = window.location.href;
   const navigate = useNavigate();
   const id = useParams().id;
-  const itemArray = TopSellingItemsData.find((item) => item.id === id);
-  const youMayLike = TopSellingItemsData.filter(
-    (item) => item.id !== id
-  ).filter((item) => item.category === itemArray.category);
+  const cartList = useSelector((state) => state.cart.itemsList);
+  const itemArray = cartList.find((item) => item.id === id);
+  const youMayLike = cartList
+    .filter((item) => item.id !== id)
+    .filter((item) => item.category === itemArray.category);
+
+  const dispatch = useDispatch();
+  const addToCart = (name, price, id) => {
+    dispatch(
+      cartActions.addToCart({
+        name,
+        price,
+        id,
+      })
+    );
+  };
+  const removeFromCart = (id) => {
+    dispatch(cartActions.removeFromCart(id));
+  };
+
   return (
     <main className="max-w-7xl mx-auto ">
       <div
@@ -69,17 +87,29 @@ function ItemsPage() {
           <t2 className="text-[38px] font-bold py-6 ">{itemArray.name}</t2>
 
           <div className="flex items-center  text-[18px] border-y w-full py-6 ">
-            <t5 className=" text-[32px] ">${itemArray.price}</t5>
+            <t5 className=" text-[32px] ">${itemArray.totalPrice}</t5>
             <strike className="text-[22px] text-[#767879db] pl-6">
-              ${(itemArray.price / 5) * 6}
+              ${(itemArray.totalPrice / 5) * 6}
             </strike>
           </div>
           <div className="flex items-center py-6  ">
             <h4>Quantity:</h4>
             <div className="flex items-center border ml-6 px-1  ">
-              <AiOutlineMinus className=" text-[18px] font-bold cursor-pointer " />
-              <p className=" text-[18px] font-bold px-4  ">23</p>
-              <AiOutlinePlus className=" text-[18px] font-bold cursor-pointer  " />
+              <AiOutlineMinus
+                onClick={() => {
+                  removeFromCart(id);
+                }}
+                className=" text-[18px] font-bold cursor-pointer "
+              />
+              <p className=" text-[18px] font-bold px-4  ">
+                {itemArray.quantity}
+              </p>
+              <AiOutlinePlus
+                onClick={() => {
+                  addToCart(itemArray.name, itemArray.price, id);
+                }}
+                className=" text-[18px] font-bold cursor-pointer  "
+              />
             </div>
           </div>
           <p className="text-[#767879db] ">Call us for bulk purchases:</p>
