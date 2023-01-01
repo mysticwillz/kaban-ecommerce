@@ -229,7 +229,7 @@ function CreateListing() {
               <input
                 type="text"
                 required
-                id="name"
+                id="storeName"
                 onChange={handleChange}
                 value={storeName}
                 placeholder="Enter Store Name"
@@ -242,7 +242,7 @@ function CreateListing() {
               </label>
               <input
                 type="tel"
-                id="price"
+                id="tel"
                 required
                 min="0"
                 onChange={handleChange}

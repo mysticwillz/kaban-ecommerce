@@ -116,6 +116,7 @@ export default function Profile() {
           list a product
         </button>
       </div>
+      <MyListings />
     </section>
   );
 }
