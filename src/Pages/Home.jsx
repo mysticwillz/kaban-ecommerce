@@ -13,6 +13,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useState, useEffect } from "react";
+import { BsPhone, BsLaptop } from "react-icons/bs";
+import { FaBaby, FaCameraRetro } from "react-icons/fa";
+import { MdOutlineSportsBaseball } from "react-icons/md";
+import { GiHealthPotion, GiClothes, GiRockingChair } from "react-icons/gi";
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
 
@@ -32,7 +36,43 @@ export default function Home() {
     <main>
       <section className="flex justify-center">
         <div className="max-w-7xl md:h-[60vh] flex md:mt-[15px] ">
-          <div className=" rounded  items-start hidden lg:block w-[20%]  bg-black h-[60vh] mr-[15px]"></div>
+          <div className="text-[#1f2d38] rounded pl-6 lg:flex border lg:flex-col justify-center   hidden  w-[20%]  bg-white h-[60vh] mr-[15px]">
+            <div className=" flex items-center my-2  hover:text-[#1e6091] transition duration-250 ease-in cursor-pointer ">
+              <BsPhone className=" text-[25px] pr-2  " />
+              <p className=" text-[16px] capitalize  ">Phones & Tablets</p>
+            </div>
+            <div className=" flex items-center  cursor-pointer my-2 hover:text-[#1e6091] transition duration-250 ease-in  ">
+              <FaBaby className=" text-[25px] cursor-pointer  pr-2" />
+              <p className=" text-[16px] capitalize  ">Baby & Kids</p>
+            </div>
+            <div className=" flex items-center cursor-pointer  my-2 hover:text-[#1e6091] transition duration-250 ease-in  ">
+              <GiHealthPotion className=" text-[25px]  cursor-pointer pr-2" />
+              <p className=" text-[16px] capitalize  ">health & beauty</p>
+            </div>
+            <div className=" flex items-center cursor-pointer my-2 hover:text-[#1e6091] transition duration-250 ease-in  ">
+              <GiClothes className=" text-[25px]  cursor-pointer pr-2" />
+
+              <p className=" text-[16px] capitalize  ">
+                fashion, bags & clothes
+              </p>
+            </div>
+            <div className="flex items-center cursor-pointer   my-2 hover:text-[#1e6091] transition duration-250 ease-in  ">
+              <MdOutlineSportsBaseball className=" text-[25px] cursor-pointer  pr-2" />
+              <p className=" text-[16px] capitalize  ">sporting goods</p>
+            </div>
+            <div className="flex items-center cursor-pointer  my-2 hover:text-[#1e6091] transition duration-250 ease-in  ">
+              <BsLaptop className=" text-[25px] cursor-pointer  pr-2" />
+              <p className=" text-[16px] capitalize  ">computing</p>
+            </div>
+            <div className=" flex items-center cursor-pointer  my-2 hover:text-[#1e6091] transition duration-250 ease-in  ">
+              <FaCameraRetro className=" text-[25px] cursor-pointer  pr-2" />
+              <p className=" text-[16px] capitalize  ">gaming & camera</p>
+            </div>
+            <div className="flex items-center my-2 cursor-pointer  hover:text-[#1e6091] transition duration-250 ease-in  ">
+              <GiRockingChair className=" text-[25px] cursor-pointer  pr-2" />
+              <p className=" text-[16px] capitalize  ">home & office</p>
+            </div>
+          </div>
           <div className=" w-full  h-[40vh] lg:w-[60%] md:h-[60vh] z-index-1 flex items-center justify-center mx-auto ">
             <Swiper
               spaceBetween={30}
