@@ -7,6 +7,7 @@ import { GiHealthPotion, GiClothes, GiRockingChair } from "react-icons/gi";
 import { useAuthStatus } from "../hooks/useAuthStatus";
 function Sidebar({ setShowMenu, showMenu }) {
   const { loggedIn } = useAuthStatus();
+  console.log(loggedIn);
   return (
     <>
       <main
@@ -30,11 +31,11 @@ function Sidebar({ setShowMenu, showMenu }) {
           </div>
           {loggedIn ? (
             <button className="w-[85px] h-[40px] text-center font-bold py-1 flex items-center justify-center hover:bg-[#1f2d38] transition duration-250 ease-in-out   capitalize   bg-[#1e6091] rounded-sm text-white">
-              Login
+              Sign out
             </button>
           ) : (
             <button className="w-[85px] h-[40px] text-center font-bold py-1 flex items-center justify-center hover:bg-[#1f2d38] transition duration-250 ease-in-out   capitalize   bg-[#1e6091] rounded-sm text-white">
-              Sign out
+              Login
             </button>
           )}
           <div className=" flex items-center my-2  hover:text-[#1e6091] transition duration-250 ease-in cursor-pointer ">

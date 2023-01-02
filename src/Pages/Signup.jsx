@@ -77,7 +77,7 @@ function Signup() {
 
           <div>
             <label htmlFor="text" className="capitalize font-bold ">
-              Name
+              Username
             </label>
           </div>
           <div>

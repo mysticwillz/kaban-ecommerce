@@ -212,13 +212,26 @@ function CreateListing() {
               <option className=" w-[60%] text-[#424b52]  ">
                 select a category
               </option>
-              <option className=" w-[60%] text-[#424b52]  ">phone</option>
-              <option className=" w-[60%] text-[#424b52]  ">laptop</option>
-              <option className=" w-[60%] text-[#424b52]  ">camera</option>
-              <option className=" w-[60%] text-[#424b52]  ">bags</option>
-              <option className=" w-[60%] text-[#424b52]  ">clothing</option>
-              <option className=" w-[60%] text-[#424b52]  ">watch</option>
-              <option className=" w-[60%] text-[#424b52]  ">shoes</option>
+              <option className=" w-[60%] text-[#424b52]  ">
+                phones & tablets
+              </option>
+              <option className=" w-[60%] text-[#424b52]  ">baby & kids</option>
+              <option className=" w-[60%] text-[#424b52]  ">
+                health & beauty
+              </option>
+              <option className=" w-[60%] text-[#424b52]  ">
+                fashion, bags & clothes
+              </option>
+              <option className=" w-[60%] text-[#424b52]  ">
+                sporting goods
+              </option>
+              <option className=" w-[60%] text-[#424b52]  ">computing</option>
+              <option className=" w-[60%] text-[#424b52]  ">
+                gaming & camera
+              </option>
+              <option className=" w-[60%] text-[#424b52]  ">
+                home & office
+              </option>
             </select>
           </div>
           <div className="w-full   flex  flex-wrap md:flex-nowrap justify-between items-center mt-[20px]  px-4 ">
