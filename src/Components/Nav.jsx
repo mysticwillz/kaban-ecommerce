@@ -41,7 +41,7 @@ function Nav() {
 
   return (
     <div className="w-full text-[#424b52] h-2xl bg-[#fff] shadow-lg sticky left-0 top-0 z-10">
-      <nav className="max-w-7xl flex justify-between items-center mx-auto p-4">
+      <nav className="max-w-7xl flex justify-between items-center mx-auto relative p-4">
         <h1
           onClick={() => {
             navigate("/");
@@ -73,14 +73,15 @@ function Nav() {
           onClick={() => {
             setShowAccount(!showAccount);
           }}
+          className="relative hidden md:block "
         >
-          <div className="flex justify-between items-center cursor-pointer m-[5px] hover:text-[#1f2d38] text-[#1e6091]">
+          <div className="flex justify-between items-center cursor-pointer m-[5px] hover:text-[#1f2d38] text-[#1e6091]  ">
             <FaUserAlt className=" pr-[5px] text-3xl" />
             <p className="md:hidden lg:block">{pageState}</p>
           </div>
 
           {showAccount && (
-            <div>
+            <div className="hidden md:block">
               <HandleAccount />
             </div>
           )}

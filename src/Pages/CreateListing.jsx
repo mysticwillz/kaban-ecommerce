@@ -281,7 +281,7 @@ function CreateListing() {
             ></textarea>
           </div>
 
-          <div className="flex items-center justify-center px-4  my-[15px]">
+          <div className="flex items-center justify-center px-4 mt-[7px] mb-[70px]">
             <button
               type="submit"
               className="w-full rounded border-0 h-[40px] outline-0 hover:bg-[#424b52] transition all duration-150 ease-in-out bg-[#1e6091] text-white uppercase flex items-center justify-center"
