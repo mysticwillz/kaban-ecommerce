@@ -9,7 +9,7 @@ import { cartActions } from "../Store/CartSlice";
 function Products() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleNavigate = (e, name, price, id, img) => {
+  const handleNavigate = (e, name, price, id, img, para) => {
     if (e.target.type === "button") {
       return;
     } else {
@@ -20,17 +20,19 @@ function Products() {
           price,
           id,
           img,
+          para,
         })
       );
     }
   };
-  const addToCart = (name, price, id, img) => {
+  const addToCart = (name, price, id, img, para) => {
     dispatch(
       cartActions.addToCart({
         name,
         price,
         id,
         img,
+        para,
       })
     );
   };
@@ -39,12 +41,12 @@ function Products() {
     <>
       <main className="  flex items-center  justify-center md:justify-between mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
         {TopSellingItemsData.map((product) => {
-          const { id, img, price, name } = product;
+          const { id, img, price, name, para } = product;
           return (
             <section
               key={id}
               onClick={(e) => {
-                handleNavigate(e, name, price, id, img);
+                handleNavigate(e, name, price, id, img, para);
               }}
               className="flex flex-col   w-[250px] h-[350px] mb-2 mx-2 lg:mx-0 border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  "
             >
@@ -69,7 +71,7 @@ function Products() {
               <button
                 type="button"
                 onClick={() => {
-                  addToCart(name, price, id, img);
+                  addToCart(name, price, id, img, para);
                 }}
                 className="text-[18px] rounded border border-[#1e6091] text-[#1e6091] hover:text-white hover:bg-[#1e6091] transition-all duration-300 ease-in flex justify-center items-center h-[40px] w-full"
               >

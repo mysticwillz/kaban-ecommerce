@@ -5,8 +5,6 @@ import { FaTwitter, FaWhatsapp, FaFacebook } from "react-icons/fa";
 import { MdOutlineLocalShipping } from "react-icons/md";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 
-import TopSellingItemsData from "./shopData/TopSellingItems";
-
 import { useNavigate, useParams } from "react-router-dom";
 import {
   FacebookShareButton,
@@ -50,9 +48,9 @@ function ItemsPage() {
         className=" mb-2 text-[18px] rounded border border-[#1e6091] text-[#1e6091] cursor-pointer mt-10 hover:text-white hover:bg-[#1e6091] transition-all duration-300 ease-in flex justify-between  px-2 items-center h-[40px] w-[200px] "
       >
         <BsFillArrowLeftCircleFill className="  w-[30px]" />{" "}
-        <p> Continue Shopping</p>
+        <p className=" whitespace-nowrap"> Continue Shopping</p>
       </div>
-      <section className="flex items-center justify-between w-full pt-4 h-screen ">
+      <section className="flex items-center justify-between flex-col md:flex-row  w-full pt-4 md:h-screen">
         <div className="flex flex-col items-center justify-center w-[50%]   ">
           <img
             src={itemArray.img}
@@ -84,10 +82,10 @@ function ItemsPage() {
           </div>
         </div>
         <article className=" w-[50%] h-full ">
-          <t2 className="text-[38px] font-bold py-6 ">{itemArray.name}</t2>
+          <h2 className="text-[38px] font-bold py-6 ">{itemArray.name}</h2>
 
           <div className="flex items-center  text-[18px] border-y w-full py-6 ">
-            <t5 className=" text-[32px] ">${itemArray.totalPrice}</t5>
+            <h5 className=" text-[32px] ">${itemArray.totalPrice}</h5>
             <strike className="text-[22px] text-[#767879db] pl-6">
               ${(itemArray.totalPrice / 5) * 6}
             </strike>
@@ -157,7 +155,7 @@ function ItemsPage() {
       </section>
 
       <section>
-        <t2 className=" text-[30px] font-bold text-[#1e6091] ">Description</t2>
+        <h2 className=" text-[30px] font-bold text-[#1e6091] ">Description</h2>
         <div className=" text-[18px] w-[600px] ">
           <p className=" text-[#767879db] text-[18px] w-[600px] mb-[10px]">
             {itemArray.para}
@@ -165,9 +163,9 @@ function ItemsPage() {
         </div>
       </section>
       {youMayLike.length > 0 && (
-        <t2 className=" text-[30px] font-bold text-[#1e6091]  ">
+        <h2 className=" text-[30px] font-bold text-[#1e6091]  ">
           Similar Products You May Like
-        </t2>
+        </h2>
       )}
       <section className="  flex items-center justify-between flex-wrap  mx-auto  w-full max-w-7xl    mt-[10px]">
         {youMayLike.map((product) => {
@@ -180,7 +178,7 @@ function ItemsPage() {
               <div className="flex  justify-center items-center w-full h-[170px]   mb-2 ">
                 <img src={img} alt="product " className=" w-full h-full" />
               </div>
-              <t5 className="capitalize mb-2  text-[#1f2d38]">{name}</t5>
+              <h5 className="capitalize mb-2  text-[#1f2d38]">{name}</h5>
               <div className="flex  justify-between items-center w-full  mb-2  ">
                 <h2 className=" text-[20px] font-bold text-[#1f2d38]">
                   $ {price}
