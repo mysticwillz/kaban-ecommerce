@@ -31,13 +31,16 @@ function Sidebar({ setShowMenu, showMenu }) {
           </div>
           {loggedIn ? (
             <button className="w-[85px] h-[40px] text-center font-bold py-1 flex items-center justify-center hover:bg-[#1f2d38] transition duration-250 ease-in-out   capitalize   bg-[#1e6091] rounded-sm text-white">
-              Sign out
+              Log Out
             </button>
           ) : (
             <button className="w-[85px] h-[40px] text-center font-bold py-1 flex items-center justify-center hover:bg-[#1f2d38] transition duration-250 ease-in-out   capitalize   bg-[#1e6091] rounded-sm text-white">
               Login
             </button>
           )}
+          <div className=" flex items-center my-2  hover:text-[#1e6091] transition duration-250 ease-in cursor-pointer ">
+            <p className=" text-[16px] capitalize  ">My Account </p>
+          </div>
           <div className=" flex items-center my-2  hover:text-[#1e6091] transition duration-250 ease-in cursor-pointer ">
             <p className=" text-[16px] capitalize  ">My orders </p>
           </div>

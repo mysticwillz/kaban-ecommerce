@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <main>
       <section className="flex justify-center">
-        <div className="max-w-7xl md:h-[60vh] flex md:mt-[15px] ">
+        <div className="max-w-7xl md:h-[60vh] flex justify-center items-center md:mt-[15px] ">
           <div className="text-[#1f2d38] rounded pl-6 lg:flex border lg:flex-col justify-center   hidden  w-[20%]  bg-white h-[60vh] mr-[15px]">
             <div className=" flex items-center my-2  hover:text-[#1e6091] transition duration-250 ease-in cursor-pointer ">
               <BsPhone className=" text-[25px] pr-2  " />
@@ -73,41 +73,9 @@ export default function Home() {
               <p className=" text-[16px] capitalize  ">home & office</p>
             </div>
           </div>
-          <div className=" w-full  h-[40vh] lg:w-[60%] md:h-[60vh] z-index-1 flex items-center justify-center mx-auto ">
-            <Swiper
-              spaceBetween={30}
-              centeredSlides={true}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              pagination={{
-                clickable: true,
-              }}
-              navigation={true}
-              modules={[Autoplay, Pagination, Navigation]}
-              className="mySwiper w-full h-[100%] z-index-1 "
-            >
-              {images.map((image) => {
-                const { img, alt, id } = image;
+          <div className=" w-full  h-[40vh] lg:w-[60%] md:h-[60vh] z-index-1 flex items-center justify-center mx-auto "></div>
 
-                return (
-                  <SwiperSlide
-                    key={id}
-                    className=" rounded-[10px] flex items-start justify-center h-[40vh] lg:h-[65vh] w-full mx-auto z-index-1"
-                  >
-                    <img
-                      src={img}
-                      alt={alt}
-                      className=" object-contain lg:object-cover rounded-[10px]  h-full min-w-[500px] p-1 lg:p-0  mx-auto"
-                    />
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-          </div>
-
-          <div className=" rounded-[10px]  hidden ml-[15px] lg:block w-[20%] bg-white h-[60vh]  flex-col items-start">
+          <div className=" rounded-[10px]  hidden ml-[15px] xl:block w-[20%] bg-white h-[60vh]  flex-col items-start">
             <div className="w-full h-[50%] rounded-t  ">
               <img
                 src={six}
