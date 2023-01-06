@@ -158,7 +158,12 @@ function Cart() {
             </p>
           </div>
           <div className="    flex justify-center  items-center   w-[350px] px-2 ">
-            <button className="text-[18px] rounded my-6 border border-[#1e6091] bg-[#1e6091] capitalize text-white hover:bg-[#fff] hover:text-[#1e6091] transition-all duration-300 ease-in flex justify-center items-center h-[40px] w-full">
+            <button
+              onClick={() => {
+                navigate("/checkout");
+              }}
+              className="text-[18px] rounded my-6 border border-[#1e6091] bg-[#1e6091] capitalize text-white hover:bg-[#fff] hover:text-[#1e6091] transition-all duration-300 ease-in flex justify-center items-center h-[40px] w-full"
+            >
               continue to checkout
             </button>
           </div>
