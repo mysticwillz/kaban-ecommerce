@@ -44,6 +44,12 @@ function Sidebar({ setShowMenu, showMenu }) {
           <div className=" flex items-center my-2  hover:text-[#1e6091] transition duration-250 ease-in cursor-pointer ">
             <p className=" text-[16px] capitalize  ">My orders </p>
           </div>
+
+          {loggedIn && (
+            <div className=" flex items-center my-2  hover:text-[#1e6091] transition duration-250 ease-in cursor-pointer ">
+              <p className=" text-[16px] capitalize  ">Create Listing </p>
+            </div>
+          )}
         </div>
 
         <div className="text-[#1f2d38] rounded pl-6 lg:flex  lg:flex-col justify-center  border-t    w-[100%]  bg-white  mr-[15px]">

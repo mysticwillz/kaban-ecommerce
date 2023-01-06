@@ -36,7 +36,7 @@ export default function Home() {
     <main>
       <section className="flex justify-center">
         <div className="max-w-7xl md:h-[60vh] flex justify-center items-center md:mt-[15px] ">
-          <div className="text-[#1f2d38] rounded pl-6 lg:flex border lg:flex-col justify-center   hidden  w-[20%]  bg-white h-[60vh] mr-[15px]">
+          <div className="text-[#1f2d38] rounded pl-6 md:flex border md:flex-col justify-center   hidden  w-[20%] bg-white h-[60vh] mr-[15px]">
             <div className=" flex items-center my-2  hover:text-[#1e6091] transition duration-250 ease-in cursor-pointer ">
               <BsPhone className=" text-[25px] pr-2  " />
               <p className=" text-[16px] capitalize  ">Phones & Tablets</p>
@@ -73,7 +73,7 @@ export default function Home() {
               <p className=" text-[16px] capitalize  ">home & office</p>
             </div>
           </div>
-          <div className=" w-full  h-[40vh] lg:w-[60%] md:h-[60vh] z-index-1 flex items-center justify-center mx-auto ">
+          <div className=" w-full  h-[40vh] lg:w-[60%] md:h-[60vh] z-index-1 flex items-center   ">
             <Swiper
               spaceBetween={30}
               centeredSlides={true}
