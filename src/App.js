@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import PrivateRoute from "./Components/PrivateRoute";
 import ItemsPage from "./Components/ItemsPage";
 import Footer from "./Layouts/Footer";
+import Checkout from "./Pages/Checkout";
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
         <Route path="/profile" element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
         </Route>
+
+        <Route path="/checkout" element={<Checkout />} />
+
         <Route path="/create-listing" element={<PrivateRoute />}>
           <Route path="/create-listing" element={<CreateListing />} />
         </Route>

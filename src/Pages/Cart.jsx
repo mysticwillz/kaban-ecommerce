@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../Store/CartSlice";
 import EmptyCart from "../Components/EmptyCart";
+import CartTableMobile from "../Components/cart/CartTableMobile";
 
 function Cart() {
   const navigate = useNavigate();
@@ -47,10 +48,25 @@ function Cart() {
         <BsFillArrowLeftCircleFill className="  w-[30px]" />
         <p> Continue Shopping</p>
       </div>
-      <section className=" flex justify-between items-start w-full mt-[50px]">
-        <table className=" w-[900px]  ">
-          <tbody className="  ">
-            <tr className="bg-[#1e6091] text-white h-[40px] ">
+      <section className="  flex lg:justify-between lg:items-start flex-col mx-auto items-center justify-center lg:flex-row mb-[20px]  w-full mt-[50px]">
+        {cartList?.map((cartItem) => {
+          const { name, totalPrice, quantity, img, id } = cartItem;
+          return (
+            <CartTableMobile
+              name={name}
+              totalPrice={totalPrice}
+              quantity={quantity}
+              img={img}
+              id={id}
+              deleteFromCart={deleteFromCart}
+              addToCart={addToCart}
+              removeFromCart={removeFromCart}
+            />
+          );
+        })}
+        <table className="hidden  md:inline-table w-[900px] ">
+          <tbody className=" ">
+            <tr className="bg-transparent text-[#1f2d38] h-[40px]">
               <th>Product Details</th>
               <th>Quantity</th>
               <th>Item Price</th>
@@ -70,7 +86,7 @@ function Cart() {
                       />
                     </div>
                     <div className=" flex flex-col justify-between  w-250px]   ">
-                      <t3>{name} </t3>
+                      <h3>{name} </h3>
                       <p className="text-[12px] mb-2  text-[#1f2d38]">
                         sold by
                         <span className="text-[12px] ml-1 text-[#1e6091] ">
@@ -113,7 +129,7 @@ function Cart() {
             })}
           </tbody>
         </table>
-        <div className="  w-[350px] border  flex-col  flex justify-start  items-center  mx-auto bg-[#fff] ">
+        <div className="  w-[350px] border  flex-col  flex justify-start  items-center mt-[15px] lg:mt-[0px] mx-auto bg-[#fff] ">
           <table className="  w-[350px]  bg-[#1e6091] text-white ">
             <tbody>
               <tr className=" flex justify-between items-center h-[40px] px-2 ">
@@ -142,7 +158,12 @@ function Cart() {
             </p>
           </div>
           <div className="    flex justify-center  items-center   w-[350px] px-2 ">
-            <button className="text-[18px] rounded my-6 border border-[#1e6091] bg-[#1e6091] capitalize text-white hover:bg-[#fff] hover:text-[#1e6091] transition-all duration-300 ease-in flex justify-center items-center h-[40px] w-full">
+            <button
+              onClick={() => {
+                navigate("/checkout");
+              }}
+              className="text-[18px] rounded my-6 border border-[#1e6091] bg-[#1e6091] capitalize text-white hover:bg-[#fff] hover:text-[#1e6091] transition-all duration-300 ease-in flex justify-center items-center h-[40px] w-full"
+            >
               continue to checkout
             </button>
           </div>
