@@ -4,7 +4,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { FiMenu } from "react-icons/fi";
 import { GiShoppingCart } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/logo.png";
+import kaban from "../assets/kaban.png";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import HandleAccount from "./HandleAccount";
 import { SearchMobile, SearchDesktop } from "./Search";
@@ -42,14 +42,16 @@ function Nav() {
   return (
     <div className="w-full text-[#424b52] h-2xl bg-[#fff] shadow-lg sticky left-0 top-0 z-10">
       <nav className="max-w-7xl flex justify-between items-center mx-auto relative p-4">
-        <h1
-          onClick={() => {
-            navigate("/");
-          }}
-          className=" text-[2rem] md:text-[2.3rem] cursor-pointer "
-        >
-          Kaban
-        </h1>
+        <div className=" flex items-center justify-center w-[90px] h-[70px] cursor-pointer m-0 p-0">
+          <img
+            src={kaban}
+            alt="kaban logo"
+            onClick={() => {
+              navigate("/");
+            }}
+            className=" w-full h-full "
+          />
+        </div>
 
         <div className=" w-[60px] hidden md:block">
           <p
