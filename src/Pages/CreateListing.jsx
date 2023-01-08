@@ -49,7 +49,7 @@ function CreateListing() {
     e.preventDefault();
 
     setLoading(true);
-    if (category === "") {
+    if (category === "" || category === "select a category") {
       setLoading(false);
       toast.error("please select category");
       return;

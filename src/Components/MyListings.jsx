@@ -44,7 +44,7 @@ function MyListings() {
     listings.length > 0 && (
       <>
         <h1 className="  text-[30px] font-bold text-center">My Listings</h1>
-        <main className="  flex items-center  justify-center  md:justify-start  mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
+        <main className="  flex items-center  justify-center    mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
           {listings.map((product) => {
             const {
               id,
@@ -52,7 +52,7 @@ function MyListings() {
             } = product;
 
             return (
-              <section className="flex flex-col   w-[250px] h-[300px] mb-2 mx-2  border hover:shadow rounded  bg-white px-4 py-2 cursor-pointer  ">
+              <section className="flex flex-col   w-[250px] h-[300px] mb-2 mx-1  border hover:shadow rounded  bg-white px-4 py-2 cursor-pointer  ">
                 <div
                   key={id}
                   className="flex  justify-center items-center w-full h-[160px]   mb-2 "
