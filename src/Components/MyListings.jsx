@@ -4,6 +4,7 @@ import { getAuth } from "firebase/auth";
 import { db } from "../Components/Firebase";
 import { getDocs, orderBy, query, collection, where } from "firebase/firestore";
 import { useState } from "react";
+import { OverlayLoader } from "../reuseables/Loaders";
 
 function MyListings() {
   const [listings, setListings] = useState([]);
@@ -37,11 +38,13 @@ function MyListings() {
   }, [auth.currentUser.uid]);
   console.log(listings);
 
-  return (
+  return loading ? (
+    <OverlayLoader />
+  ) : (
     listings.length > 0 && (
       <>
         <h1 className="  text-[30px] font-bold text-center">My Listings</h1>
-        <main className="  flex items-center  justify-center md:justify-between mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
+        <main className="  flex items-center  justify-center  md:justify-start  mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
           {listings.map((product) => {
             const {
               id,
@@ -49,10 +52,10 @@ function MyListings() {
             } = product;
 
             return (
-              <section className="flex flex-col   w-[250px] h-[300px] mb-2 mx-2 lg:mx-0 border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  ">
+              <section className="flex flex-col   w-[250px] h-[300px] mb-2 mx-2  border hover:shadow rounded  bg-white px-4 py-2 cursor-pointer  ">
                 <div
                   key={id}
-                  className="flex  justify-center items-center w-full h-[170px]   mb-2 "
+                  className="flex  justify-center items-center w-full h-[160px]   mb-2 "
                 >
                   <img src={imgUrls[0]} alt="item" className="w-full h-full " />
                 </div>
@@ -62,7 +65,7 @@ function MyListings() {
                     $ {price}
                   </h2>
                 </div>
-                <p className="text-[12px] mb-2  text-[#1f2d38]">
+                <p className="text-[12px] mb-2 flex items-center justify-between  text-[#1f2d38]">
                   sold by
                   <span className="text-[12px] ml-1 text-[#1e6091] ">
                     {storeName}

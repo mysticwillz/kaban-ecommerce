@@ -77,7 +77,7 @@ function HandleAccount() {
         <ul className=" mb-[30px] border-b-[1px] border-[#1e6091] pb-[10px] cursor-pointer ">
           <li
             onClick={() => {
-              navigate("/orders");
+              navigate("/profile");
             }}
             className=" hover:text-[#424b52] transition duration-250 ease-in-out  flex text-[#1e6091]  items-center "
           >
