@@ -5,6 +5,7 @@ import { db } from "../Components/Firebase";
 import { getDocs, orderBy, query, collection, where } from "firebase/firestore";
 import { useState } from "react";
 import { OverlayLoader } from "../reuseables/Loaders";
+import { Split } from "../Store/Molecules/splitterFunction";
 
 function MyListings() {
   const [listings, setListings] = useState([]);
@@ -59,7 +60,10 @@ function MyListings() {
                 >
                   <img src={imgUrls[0]} alt="item" className="w-full h-full " />
                 </div>
-                <h5 className="capitalize mb-2  text-[#1f2d38]"> {name}</h5>
+                <h5 className="capitalize mb-2  text-[#1f2d38]">
+                  {" "}
+                  {Split(name)}
+                </h5>
                 <div className="flex  justify-between items-start w-full  mb-2  ">
                   <h2 className=" text-[20px] font-bold text-[#1f2d38]">
                     $ {price}

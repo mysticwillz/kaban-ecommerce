@@ -11,6 +11,7 @@ import CartTableMobile from "../Components/cart/CartTableMobile";
 function Cart() {
   const navigate = useNavigate();
   const cartList = useSelector((state) => state.cart.itemsList);
+
   let total = 0;
   cartList.forEach((item) => {
     total += item.totalPrice;
