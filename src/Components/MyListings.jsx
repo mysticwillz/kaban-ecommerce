@@ -5,7 +5,7 @@ import { db } from "../Components/Firebase";
 import { getDocs, orderBy, query, collection, where } from "firebase/firestore";
 import { useState } from "react";
 import { OverlayLoader } from "../reuseables/Loaders";
-import { Split } from "../Store/Molecules/splitterFunction";
+import { Split } from "../Molecules/splitterFunction";
 
 function MyListings() {
   const [listings, setListings] = useState([]);
