@@ -49,8 +49,8 @@ function Checkout() {
     }
   };
   return (
-    <main className=" max-w-7xl ">
-      <section className="flex items-center justify-center max-w-4xl my-9 mx-auto bg-[#6c757d] rounded ">
+    <main className=" max-w-7xl px-3 md:px-0 ">
+      <section className="flex items-center justify-center max-w-2xl my-9 mx-auto bg-[#6c757d] rounded ">
         <main className="max-w-[30rem] mx-auto mt-[10px]">
           <header className="flex items-center justify-center my-[10px] text-white">
             <h1 className="text-center text-[2.3rem] font-bold ">Payment</h1>
@@ -68,7 +68,7 @@ function Checkout() {
                   onChange={handleChange}
                   value={name}
                   placeholder="Enter delivery address"
-                  className="w-full rounded border-0 focus:border-[#1e6091] "
+                  className="w-full rounded border-0 focus:border-[#1e6091] text-[20px] font-bold  letter-spacing  "
                 />
               </div>
             </div>
@@ -84,7 +84,7 @@ function Checkout() {
                   onChange={handleChange}
                   value={name}
                   placeholder="Name on card"
-                  className="w-full rounded border-0 focus:border-[#1e6091] "
+                  className="w-full rounded border-0 focus:border-[#1e6091] text-[20px] font-bold  letter-spacing  "
                 />
               </div>
             </div>
@@ -117,7 +117,7 @@ function Checkout() {
                   onChange={handleChange}
                   value={storeName}
                   placeholder="MM/YY"
-                  className="w-full rounded border-0 focus:border-[#1e6091] "
+                  className="w-full rounded border-0 focus:border-[#1e6091] text-[20px] font-bold  letter-spacing  "
                 />
               </div>
               <div className="flex flex-col  items-start  w-[49%]  ">
@@ -132,7 +132,7 @@ function Checkout() {
                   onChange={handleChange}
                   value={tel}
                   placeholder="Code"
-                  className="w-full rounded border-0 focus:border-[#1e6091] "
+                  className="w-full rounded border-0 focus:border-[#1e6091] text-[20px] font-bold  letter-spacing  "
                 />
               </div>
             </div>
@@ -147,7 +147,6 @@ function Checkout() {
             </div>
           </form>
         </main>
-        <Order />
       </section>
     </main>
   );

@@ -13,6 +13,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../Components/Firebase";
 import { useNavigate } from "react-router-dom";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
+import { OverlayLoader } from "../reuseables/Loaders";
 function CreateListing() {
   const auth = getAuth();
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ function CreateListing() {
     e.preventDefault();
 
     setLoading(true);
-    if (category === "") {
+    if (category === "" || category === "select a category") {
       setLoading(false);
       toast.error("please select category");
       return;
@@ -123,11 +124,7 @@ function CreateListing() {
   };
 
   if (loading) {
-    return (
-      <div>
-        <p>Loading....</p>
-      </div>
-    );
+    return <OverlayLoader />;
   }
 
   return (
@@ -150,7 +147,7 @@ function CreateListing() {
         </header>
         <form onSubmit={handleSubmit} className="flex flex-col mt-3  w-full">
           <div className="w-full   flex  flex-wrap md:flex-nowrap justify-between items-center  px-4 ">
-            <div className="flex flex-col md:flex-row w-full md:w-[49%] items-start  md:items-center">
+            <div className="  flex flex-col  w-full md:w-[49%] items-start ">
               <label htmlFor="name" className="font-bold pr-2 ">
                 Name:
               </label>
@@ -164,7 +161,7 @@ function CreateListing() {
                 className="w-full rounded border-0 focus:border-[#1e6091] "
               />
             </div>
-            <div className="flex md:items-center flex-col md:flex-row w-full items-start md:w-[49%]  ">
+            <div className="flex  flex-col  w-full items-start md:w-[49%]  mt-[20px] md:mt-0 ">
               <label htmlFor="price" className="font-bold pr-2 ">
                 Price:
               </label>
@@ -183,14 +180,14 @@ function CreateListing() {
 
           <div className="flex flex-col whitespace-normal px-4 items-start mt-[20px]">
             <p className="font-bold pr-2 whitespace-nowrap">Display Images:</p>
-            <p className="font-bold text-sm pr-2 whitespace-nowrap">
+            <p className="font-bold text-[12px] pr-2 whitespace-nowrap">
               The first image will be the cover image (4 images max)
             </p>
             <input
               type="file"
               id="img"
               max="4"
-              accept=".jpg, .png, .jpeg"
+              accept=".jpg, .png, .jpeg, .webp"
               multiple
               required
               onChange={handleChange}
@@ -235,7 +232,7 @@ function CreateListing() {
             </select>
           </div>
           <div className="w-full   flex  flex-wrap md:flex-nowrap justify-between items-center mt-[20px]  px-4 ">
-            <div className="flex flex-col md:flex-row w-full md:w-[49%] items-start  md:items-center">
+            <div className="flex flex-col  w-full md:w-[49%] items-start ">
               <label htmlFor="name" className="font-bold pr-2 ">
                 Store Name:
               </label>
@@ -249,7 +246,7 @@ function CreateListing() {
                 className="w-full rounded border-0 focus:border-[#1e6091] "
               />
             </div>
-            <div className="flex md:items-center flex-col md:flex-row w-full items-start md:w-[49%]  ">
+            <div className="flex flex-col  w-full items-start md:w-[49%] mt-[20px] md:mt-0  ">
               <label htmlFor="price" className="font-bold pr-2 ">
                 Phone:
               </label>
