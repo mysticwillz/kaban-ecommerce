@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import TopSellingItemsData from "./shopData/TopSellingItems";
 
 import { cartActions } from "../Store/CartSlice";
+import { Split } from "../Molecules/splitterFunction";
 
 function Products() {
   const navigate = useNavigate();
@@ -53,7 +54,7 @@ function Products() {
               <div className="flex  justify-center items-center w-full h-[170px]   mb-2 ">
                 <img src={img} alt="product " className=" w-full h-full" />
               </div>
-              <t5 className="capitalize mb-2  text-[#1f2d38]">{name}</t5>
+              <t5 className="capitalize mb-2  text-[#1f2d38]">{Split(name)}</t5>
               <div className="flex  justify-between items-center w-full  mb-2  ">
                 <h2 className=" text-[20px] font-bold text-[#1f2d38]">
                   $ {price}
