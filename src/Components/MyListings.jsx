@@ -37,7 +37,6 @@ function MyListings() {
     };
     fetchUserListing();
   }, [auth.currentUser.uid]);
-  console.log(listings);
 
   return loading ? (
     <OverlayLoader />

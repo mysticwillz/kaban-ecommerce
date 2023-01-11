@@ -1,15 +1,45 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import { OverlayLoader } from "../reuseables/Loaders";
+import { db } from "../Components/Firebase";
+import { getDocs, orderBy, query, collection } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import TopSellingItemsData from "./shopData/TopSellingItems";
 
 import { cartActions } from "../Store/CartSlice";
 import { Split } from "../Molecules/splitterFunction";
 
 function Products() {
+  const [listings, setListings] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchUserListing = async () => {
+      const listingRef = collection(db, "listings");
+
+      const q = query(
+        listingRef,
+
+        orderBy("timestamp", "desc")
+      );
+
+      const querySnap = await getDocs(q);
+
+      let myListingsArray = [];
+      querySnap.forEach((doc) => {
+        return myListingsArray.push({
+          id: doc.id,
+          data: doc.data(),
+        });
+      });
+
+      setListings(myListingsArray);
+
+      setLoading(false);
+    };
+    fetchUserListing();
+  }, []);
   const handleNavigate = (e, name, price, id, img, para) => {
     if (e.target.type === "button") {
       return;
@@ -38,11 +68,16 @@ function Products() {
     );
   };
 
-  return (
+  return loading ? (
+    <OverlayLoader />
+  ) : (
     <>
       <main className="  flex items-center  justify-center md:justify-between mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
-        {TopSellingItemsData.map((product) => {
-          const { id, img, price, name, para } = product;
+        {listings.map((product) => {
+          const {
+            id,
+            data: { imgUrls: img, price, name, storeName, para },
+          } = product;
           return (
             <section
               key={id}
@@ -52,9 +87,9 @@ function Products() {
               className="flex flex-col   w-[250px] h-[350px] mb-2 mx-2 lg:mx-0 border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  "
             >
               <div className="flex  justify-center items-center w-full h-[170px]   mb-2 ">
-                <img src={img} alt="product " className=" w-full h-full" />
+                <img src={img[0]} alt="product " className=" w-full h-full" />
               </div>
-              <t5 className="capitalize mb-2  text-[#1f2d38]">{Split(name)}</t5>
+              <h5 className="capitalize mb-2  text-[#1f2d38]">{Split(name)}</h5>
               <div className="flex  justify-between items-center w-full  mb-2  ">
                 <h2 className=" text-[20px] font-bold text-[#1f2d38]">
                   $ {price}
@@ -66,7 +101,7 @@ function Products() {
               <p className="text-[12px] mb-2  text-[#1f2d38]">
                 sold by
                 <span className="text-[12px] ml-1 text-[#1e6091] ">
-                  Willz Wonderland
+                  {storeName}
                 </span>
               </p>
               <button
