@@ -14,6 +14,7 @@ import PrivateRoute from "./Components/PrivateRoute";
 import ItemsPage from "./Components/ItemsPage";
 import Footer from "./Layouts/Footer";
 import Checkout from "./Pages/Checkout";
+import Category from "./Pages/Category";
 
 function App() {
   return (
@@ -29,6 +30,10 @@ function App() {
 
         <Route path="/create-listing" element={<PrivateRoute />}>
           <Route path="/create-listing" element={<CreateListing />} />
+        </Route>
+
+        <Route path="/category" element={<PrivateRoute />}>
+          <Route path="/category" element={<Category />} />
         </Route>
 
         <Route path="/login" element={<Login />} />
