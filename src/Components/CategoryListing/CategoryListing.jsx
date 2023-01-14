@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { OverlayLoader } from "../../reuseables/Loaders";
 import { db } from "../../Components/Firebase";
 import { getDocs, orderBy, query, collection } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { cartActions } from "../../Store/CartSlice";
@@ -40,8 +40,12 @@ function CategoryListing() {
     };
     fetchUserListing();
   }, []);
+  const category = useParams().category;
+  console.log(category);
 
-  const categoryList = listings.filter((list) => list.category === "Computing");
+  const categoryList = listings.filter(
+    (list) => list.data.category === String(category)
+  );
 
   const handleNavigate = (e, name, price, id, img, para) => {
     if (e.target.type === "button") {
@@ -75,6 +79,9 @@ function CategoryListing() {
     <OverlayLoader />
   ) : (
     <>
+      <h1 className="font-bold text-[32px] text-center uppercase ">
+        {category}
+      </h1>
       <main className="  flex items-center  justify-center md:justify-between mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
         {categoryList.map((product) => {
           const {

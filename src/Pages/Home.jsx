@@ -88,7 +88,7 @@ export default function Home() {
                 <div
                   key={id}
                   onClick={() => {
-                    navigate(`/categories:${category}`);
+                    navigate(`/category/${category}`);
                   }}
                   className=" flex items-center my-2  hover:text-[#1e6091] transition duration-250 ease-in cursor-pointer "
                 >

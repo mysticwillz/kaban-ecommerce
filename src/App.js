@@ -33,7 +33,7 @@ function App() {
         </Route>
 
         <Route path="/category" element={<PrivateRoute />}>
-          <Route path="/category" element={<Category />} />
+          <Route path="/category/:category" element={<Category />} />
         </Route>
 
         <Route path="/login" element={<Login />} />
