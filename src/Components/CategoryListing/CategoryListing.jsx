@@ -43,9 +43,10 @@ function CategoryListing() {
   const category = useParams().category;
   console.log(category);
 
-  const categoryList = listings.filter(
-    (list) => list.data.category === String(category)
-  );
+  const categoryList = listings.filter((list) => {
+    console.log(category);
+    return list.data.category === category.trim();
+  });
 
   const handleNavigate = (e, name, price, id, img, para) => {
     if (e.target.type === "button") {
