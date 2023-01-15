@@ -1,18 +1,25 @@
 import React, { useContext } from "react";
+import { OverlayLoader } from "../../reuseables/Loaders";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { cartActions } from "../Store/CartSlice";
-import { Split } from "../Molecules/splitterFunction";
-import { FetchContext } from "../Context/FetchContext";
+import { cartActions } from "../../Store/CartSlice";
+import { Split } from "../../Molecules/splitterFunction";
+import { FetchContext } from "../../Context/FetchContext";
 
-function Products({ listings }) {
+function CategoryListing() {
+  const { listings, loading } = useContext(FetchContext);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  //  const { listings } = useContext(FetchContext);
-  console.log(listings);
+  const category = useParams().category;
+  console.log(category);
+
+  const categoryList = listings.filter((list) => {
+    console.log(category);
+    return list.data.category === category.trim();
+  });
 
   const handleNavigate = (e, name, price, id, img, para) => {
     if (e.target.type === "button") {
@@ -42,10 +49,15 @@ function Products({ listings }) {
     );
   };
 
-  return (
+  return loading ? (
+    <OverlayLoader />
+  ) : (
     <>
+      <h1 className="font-bold text-[32px] text-center uppercase ">
+        {category}
+      </h1>
       <main className="  flex items-center  justify-center md:justify-between mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
-        {listings?.map((product) => {
+        {categoryList.map((product) => {
           const {
             id,
             data: { imgUrls: img, price, name, storeName, para },
@@ -93,4 +105,4 @@ function Products({ listings }) {
   );
 }
 
-export default Products;
+export default CategoryListing;
