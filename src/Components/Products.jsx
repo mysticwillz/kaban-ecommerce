@@ -1,45 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { OverlayLoader } from "../reuseables/Loaders";
-import { db } from "../Components/Firebase";
-import { getDocs, orderBy, query, collection } from "firebase/firestore";
+import React, { useContext } from "react";
+
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { cartActions } from "../Store/CartSlice";
 import { Split } from "../Molecules/splitterFunction";
+import { FetchContext } from "../Context/FetchContext";
 
-function Products() {
-  const [listings, setListings] = useState([]);
-  const [loading, setLoading] = useState(true);
+function Products({ listings }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const fetchUserListing = async () => {
-      const listingRef = collection(db, "listings");
+  //  const { listings } = useContext(FetchContext);
+  console.log(listings);
 
-      const q = query(
-        listingRef,
-
-        orderBy("timestamp", "desc")
-      );
-
-      const querySnap = await getDocs(q);
-
-      let myListingsArray = [];
-      querySnap.forEach((doc) => {
-        return myListingsArray.push({
-          id: doc.id,
-          data: doc.data(),
-        });
-      });
-
-      setListings(myListingsArray);
-
-      setLoading(false);
-    };
-    fetchUserListing();
-  }, []);
   const handleNavigate = (e, name, price, id, img, para) => {
     if (e.target.type === "button") {
       return;
@@ -68,12 +42,10 @@ function Products() {
     );
   };
 
-  return loading ? (
-    <OverlayLoader />
-  ) : (
+  return (
     <>
       <main className="  flex items-center  justify-center md:justify-between mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
-        {listings.map((product) => {
+        {listings?.map((product) => {
           const {
             id,
             data: { imgUrls: img, price, name, storeName, para },

@@ -1,45 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { OverlayLoader } from "../../reuseables/Loaders";
-import { db } from "../../Components/Firebase";
-import { getDocs, orderBy, query, collection } from "firebase/firestore";
+
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { cartActions } from "../../Store/CartSlice";
 import { Split } from "../../Molecules/splitterFunction";
+import { FetchContext } from "../../Context/FetchContext";
 
 function CategoryListing() {
-  const [listings, setListings] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { listings, loading } = useContext(FetchContext);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const fetchUserListing = async () => {
-      const listingRef = collection(db, "listings");
-
-      const q = query(
-        listingRef,
-
-        orderBy("timestamp", "desc")
-      );
-
-      const querySnap = await getDocs(q);
-
-      let myListingsArray = [];
-      querySnap.forEach((doc) => {
-        return myListingsArray.push({
-          id: doc.id,
-          data: doc.data(),
-        });
-      });
-
-      setListings(myListingsArray);
-
-      setLoading(false);
-    };
-    fetchUserListing();
-  }, []);
   const category = useParams().category;
   console.log(category);
 
