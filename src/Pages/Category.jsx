@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import CategoryListing from "../Components/CategoryListing/CategoryListing";
+import { FetchContext } from "../Context/FetchContext";
 
 function Category() {
-  return <CategoryListing />;
+  const listings = useContext(FetchContext);
+  return <CategoryListing listings={listings} />;
 }
 
 export default Category;

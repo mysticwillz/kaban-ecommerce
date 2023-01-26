@@ -1,23 +1,16 @@
-import React, { useContext } from "react";
-import { OverlayLoader } from "../../reuseables/Loaders";
-
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { cartActions } from "../../Store/CartSlice";
 import { Split } from "../../Molecules/splitterFunction";
-import { FetchContext } from "../../Context/FetchContext";
 
-function CategoryListing() {
-  const { listings, loading } = useContext(FetchContext);
+function CategoryListing({ listings }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const category = useParams().category;
-  console.log(category);
 
   const categoryList = listings.filter((list) => {
-    console.log(category);
     return list.data.category === category.trim();
   });
 
@@ -49,15 +42,13 @@ function CategoryListing() {
     );
   };
 
-  return loading ? (
-    <OverlayLoader />
-  ) : (
+  return (
     <>
       <h1 className="font-bold text-[32px] text-center uppercase ">
         {category}
       </h1>
       <main className="  flex items-center  justify-center md:justify-between mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
-        {categoryList.map((product) => {
+        {categoryList?.map((product) => {
           const {
             id,
             data: { imgUrls: img, price, name, storeName, para },
