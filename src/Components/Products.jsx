@@ -1,18 +1,12 @@
-import React, { useContext } from "react";
-
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { cartActions } from "../Store/CartSlice";
 import { Split } from "../Molecules/splitterFunction";
-import { FetchContext } from "../Context/FetchContext";
 
 function Products({ listings }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  //  const { listings } = useContext(FetchContext);
-  console.log(listings);
 
   const handleNavigate = (e, name, price, id, img, para) => {
     if (e.target.type === "button") {

@@ -12,7 +12,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { BsPhone, BsLaptop } from "react-icons/bs";
 import { FaBaby, FaCameraRetro } from "react-icons/fa";
 import { MdOutlineSportsBaseball } from "react-icons/md";
@@ -22,6 +22,7 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 
 import Products from "../Components/Products.jsx";
 import { useNavigate } from "react-router-dom";
+import { FetchContext } from "../Context/FetchContext";
 
 export default function Home() {
   const images = [
@@ -76,7 +77,7 @@ export default function Home() {
     },
   ];
   const navigate = useNavigate();
-
+  const listings = useContext(FetchContext);
   return (
     <main>
       <section className="flex justify-center">
@@ -151,7 +152,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Products />
+      <Products listings={listings} />
     </main>
   );
 }
