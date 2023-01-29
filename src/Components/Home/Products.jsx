@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { cartActions } from "../Store/CartSlice";
-import { Split } from "../Molecules/splitterFunction";
+import { cartActions } from "../../Store/CartSlice";
+import { Split } from "../../Molecules/splitterFunction";
 
 function Products({ listings }) {
   const navigate = useNavigate();
