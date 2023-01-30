@@ -12,9 +12,9 @@ function Hero() {
   const navigate = useNavigate();
   return (
     <>
-      <section className="flex justify-center items-center max-w-7xl mx-auto w-full">
+      <section className="flex justify-center items-center max-w-7xl mx-auto w-full px-2 lg:px-0">
         <div className=" md:h-[60vh] flex justify-between items-center md:mt-[15px]  w-full ">
-          <div className="text-[#1f2d38] rounded pl-6 md:flex border md:flex-col justify-center   hidden  w-[20%] bg-white h-[60vh] mr-[15px]">
+          <div className="text-[#1f2d38] rounded pl-6 md:flex border md:flex-col justify-center   hidden md:w-[30%] lg:w-[20%] bg-white h-[60vh] mr-[15px]">
             {categories?.map((cat) => {
               const { category, id, icon } = cat;
               return (
@@ -33,7 +33,7 @@ function Hero() {
           </div>
           <Slider />
 
-          <div className=" rounded-[10px]  hidden ml-[15px] xl:block w-[20%] bg-white h-[60vh]  flex-col items-start">
+          <div className=" rounded-[10px]  hidden ml-[15px] lg:block w-[20%] bg-white h-[60vh]  flex-col items-start">
             <div className="w-full h-[50%] rounded-t ">
               <img
                 src={six}
