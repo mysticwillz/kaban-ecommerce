@@ -8,7 +8,7 @@ import Hero from "../Components/Home/Hero.jsx";
 export default function Home() {
   const listings = useContext(FetchContext);
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <Hero />
       <Products listings={listings} />
     </main>
