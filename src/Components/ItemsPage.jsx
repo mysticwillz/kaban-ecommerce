@@ -54,7 +54,7 @@ function ItemsPage() {
         <p className=" whitespace-nowrap"> Continue Shopping</p>
       </div>
       <section className="flex items-center justify-between flex-col md:flex-row  w-full pt-4 md:h-screen">
-        <ImageSection />
+        <ImageSection poster={itemArray.img} />
         <article className=" w-[50%] h-full ">
           <h2 className="text-[38px] font-bold py-6 ">{itemArray.name}</h2>
 

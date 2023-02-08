@@ -11,7 +11,7 @@ function CategoryListing({ listings }) {
   const category = useParams().category;
 
   const categoryList = listings.filter((list) => {
-    return list.data.category === category.trim();
+    return list.data.category === category.trim().toLowerCase();
   });
 
   const handleNavigate = (e, name, price, id, img, para) => {

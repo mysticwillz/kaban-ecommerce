@@ -61,10 +61,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
 
           <Route path="/create-listing" element={<PrivateRoute />}>
-            <Route
-              path="/create-listing/:category"
-              element={<CreateListing />}
-            />
+            <Route path="/create-listing" element={<CreateListing />} />
           </Route>
 
           <Route path="/category" element={<PrivateRoute />}>
