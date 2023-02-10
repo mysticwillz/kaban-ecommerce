@@ -265,7 +265,7 @@ function CreateListing() {
 
           <div className=" w-full px-4 mt-[20px]">
             <p htmlFor="para" className="font-bold ">
-              Description
+              Description:
             </p>
             <textarea
               onChange={handleChange}

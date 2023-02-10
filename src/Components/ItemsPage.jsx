@@ -13,6 +13,9 @@ import {
 } from "react-share";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../Store/CartSlice";
+import YouMayLike from "./Items/YouMayLike";
+import Description from "./Items/Description";
+import ImageSection from "./Items/ImageSection";
 
 function ItemsPage() {
   const [showNum, setShowNum] = useState(false);
@@ -47,47 +50,18 @@ function ItemsPage() {
         }}
         className=" mb-2 text-[18px] rounded border border-[#1e6091] text-[#1e6091] cursor-pointer mt-10 hover:text-white hover:bg-[#1e6091] transition-all duration-300 ease-in flex justify-between  px-2 items-center h-[40px] w-[200px] "
       >
-        <BsFillArrowLeftCircleFill className="  w-[30px]" />{" "}
+        <BsFillArrowLeftCircleFill className="  w-[30px]" />
         <p className=" whitespace-nowrap"> Continue Shopping</p>
       </div>
       <section className="flex items-center justify-between flex-col md:flex-row  w-full pt-4 md:h-screen">
-        <div className="flex flex-col items-center justify-center w-[50%]   ">
-          <img
-            src={itemArray.img}
-            alt="item description"
-            className="w-[500px] h-[400px]"
-          />
-          <div className="flex  items-center justify-center ">
-            <div className="flex  items-center justify-center w-[55px] h-[55px] border-[2px] border-red-500">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmR4jkEpjxw8UNqthaL6bcKZTivc8444J5vA&usqp=CAU"
-                alt="item description"
-                className="flex  w-[50px] h-[50px] "
-              />
-            </div>
-            <div className="flex  items-center justify-center w-[55px] h-[55px] m-4 border-[2px] border-red-500">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmR4jkEpjxw8UNqthaL6bcKZTivc8444J5vA&usqp=CAU"
-                alt="item description"
-                className="flex  w-[50px] h-[50px] "
-              />
-            </div>
-            <div className="flex  items-center justify-center w-[55px] h-[55px] border-[2px] border-red-500">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmR4jkEpjxw8UNqthaL6bcKZTivc8444J5vA&usqp=CAU"
-                alt="item description"
-                className="flex  w-[50px] h-[50px] "
-              />
-            </div>
-          </div>
-        </div>
+        <ImageSection poster={itemArray.img} />
         <article className=" w-[50%] h-full ">
           <h2 className="text-[38px] font-bold py-6 ">{itemArray.name}</h2>
 
           <div className="flex items-center  text-[18px] border-y w-full py-6 ">
             <h5 className=" text-[32px] ">${itemArray.totalPrice}</h5>
             <strike className="text-[22px] text-[#767879db] pl-6">
-              ${(itemArray.totalPrice / 5) * 6}
+              ${Math.round((itemArray.totalPrice / 5) * 6)}
             </strike>
           </div>
           <div className="flex items-center py-6  ">
@@ -154,52 +128,8 @@ function ItemsPage() {
         </article>
       </section>
 
-      <section>
-        <h2 className=" text-[30px] font-bold text-[#1e6091] ">Description</h2>
-        <div className=" text-[18px] w-[600px] ">
-          <p className=" text-[#767879db] text-[18px] w-[600px] mb-[10px]">
-            {itemArray.para}
-          </p>
-        </div>
-      </section>
-      {youMayLike.length > 0 && (
-        <h2 className=" text-[30px] font-bold text-[#1e6091]  ">
-          Similar Products You May Like
-        </h2>
-      )}
-      <section className="  flex items-center justify-between flex-wrap  mx-auto  w-full max-w-7xl    mt-[10px]">
-        {youMayLike.map((product) => {
-          const { id, img, price, name } = product;
-          return (
-            <div
-              key={id}
-              className="flex flex-col   w-[250px] h-[350px] mb-2 mx-2 lg:mx-0  border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  "
-            >
-              <div className="flex  justify-center items-center w-full h-[170px]   mb-2 ">
-                <img src={img} alt="product " className=" w-full h-full" />
-              </div>
-              <h5 className="capitalize mb-2  text-[#1f2d38]">{name}</h5>
-              <div className="flex  justify-between items-center w-full  mb-2  ">
-                <h2 className=" text-[20px] font-bold text-[#1f2d38]">
-                  $ {price}
-                </h2>
-                <strike className="text-[17px] text-[#767879db]">
-                  $ {price / 5}
-                </strike>
-              </div>
-              <p className="text-[12px] mb-2  text-[#1f2d38]">
-                sold by
-                <span className="text-[12px] ml-1 text-[#1e6091] ">
-                  Willz Wonderland
-                </span>
-              </p>
-              <button className="text-[18px] rounded border border-[#1e6091] text-[#1e6091] hover:text-white hover:bg-[#1e6091] transition-all duration-300 ease-in flex justify-center items-center h-[40px] w-full">
-                Add to cart
-              </button>
-            </div>
-          );
-        })}
-      </section>
+      <YouMayLike youMayLike={youMayLike} />
+      <Description description={itemArray.para} />
     </main>
   );
 }
