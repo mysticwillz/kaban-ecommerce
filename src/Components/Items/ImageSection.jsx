@@ -3,12 +3,11 @@ import React from "react";
 function ImageSection({ poster }) {
   console.log(poster);
   return (
-    <div className="flex flex-col items-center justify-center w-[50%]   ">
-      <img
-        src={poster[0]}
-        alt="item description"
-        className="w-[500px] h-[400px]"
-      />
+    <div className="flex flex-col items-center justify-center w-full md:w-[50%]  h-[400px] ">
+      <div className=" flex items-center justify-center md:w-[500px] w-[350px]">
+        <img src={poster[0]} alt="item description" className="w-full h-full" />
+      </div>
+
       <div className="flex  items-center justify-center ">
         <div className="flex  items-center justify-center w-[55px] h-[55px] border-[2px] border-red-500">
           <img

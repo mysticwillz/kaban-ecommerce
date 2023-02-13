@@ -43,7 +43,7 @@ function ItemsPage() {
   };
 
   return (
-    <main className="max-w-7xl mx-auto ">
+    <main className="max-w-7xl mx-auto  overflow-x-hidden px-2 md:px-0">
       <div
         onClick={() => {
           navigate("/");
@@ -53,9 +53,9 @@ function ItemsPage() {
         <BsFillArrowLeftCircleFill className="  w-[30px]" />
         <p className=" whitespace-nowrap"> Continue Shopping</p>
       </div>
-      <section className="flex items-center justify-between flex-col md:flex-row  w-full pt-4 md:h-screen">
+      <section className="flex items-center justify-between flex-col md:flex-row mt-10 md:mt-0  w-full pt-4 md:h-screen">
         <ImageSection poster={itemArray.img} />
-        <article className=" w-[50%] h-full ">
+        <article className=" w-full md:w-[50%] h-full ">
           <h2 className="text-[38px] font-bold py-6 ">{itemArray.name}</h2>
 
           <div className="flex items-center  text-[18px] border-y w-full py-6 ">
