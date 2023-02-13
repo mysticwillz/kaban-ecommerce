@@ -62,7 +62,12 @@ function Sidebar({ setShowMenu, showMenu }) {
               Login
             </button>
           )}
-          <div className=" flex items-center my-2  hover:text-[#1e6091] transition duration-250 ease-in cursor-pointer ">
+          <div
+            onClick={() => {
+              navigate("/profile");
+            }}
+            className=" flex items-center my-2  hover:text-[#1e6091] transition duration-250 ease-in cursor-pointer "
+          >
             <p className=" text-[16px] capitalize  ">My Account </p>
           </div>
           <div className=" flex items-center my-2  hover:text-[#1e6091] transition duration-250 ease-in cursor-pointer ">
