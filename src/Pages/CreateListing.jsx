@@ -222,7 +222,7 @@ function CreateListing() {
               <option className=" w-[60%] text-[#424b52]  ">
                 sporting goods
               </option>
-              <option className=" w-[60%] text-[#424b52]  ">computing</option>
+              <option className=" w-[60%] text-[#424b52]  "> computing</option>
               <option className=" w-[60%] text-[#424b52]  ">
                 gaming & camera
               </option>

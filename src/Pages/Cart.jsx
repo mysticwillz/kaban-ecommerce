@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { FiTrash2 } from "react-icons/fi";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
@@ -7,10 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../Store/CartSlice";
 import EmptyCart from "../Components/EmptyCart";
 import CartTableMobile from "../Components/cart/CartTableMobile";
+import { FetchContext } from "../Context/FetchContext";
 
 function Cart() {
   const navigate = useNavigate();
   const cartList = useSelector((state) => state.cart.itemsList);
+  const listings = useContext(FetchContext);
 
   let total = 0;
   cartList.forEach((item) => {
@@ -36,7 +38,7 @@ function Cart() {
   return cartList.length === 0 ? (
     <EmptyCart />
   ) : (
-    <main className=" max-w-7xl mx-auto ">
+    <main className=" max-w-7xl mx-auto px-2 md:px-0 overflow-x-hidden ">
       <h1 className=" text-[38px] py-6 font-bold text-[#1f2d38]">
         Shopping Cart
       </h1>
@@ -77,8 +79,11 @@ function Cart() {
               const { name, totalPrice, quantity, img, id } = cartItem;
 
               return (
-                <tr key={id} className="bg-[#dfdada3a] border-b  my-2">
-                  <td className=" flex justify-between items-center w-[350px]   ">
+                <tr className="bg-[#dfdada3a] border-b  my-2">
+                  <td
+                    key={id}
+                    className=" flex justify-between items-center w-[350px]   "
+                  >
                     <div className=" flex justify-around items-center w-[80px]  h-[80px] ">
                       <img
                         src={img}
@@ -91,7 +96,10 @@ function Cart() {
                       <p className="text-[12px] mb-2  text-[#1f2d38]">
                         sold by
                         <span className="text-[12px] ml-1 text-[#1e6091] ">
-                          Willz Wonderland
+                          {
+                            listings.find((item) => item.id === id).data
+                              .storeName
+                          }
                         </span>
                       </p>
                     </div>
@@ -150,8 +158,8 @@ function Cart() {
             <p className=" ">${total}</p>
           </div>
           <div className="   border-b flex justify-between items-start  w-[350px] p-2 ">
-            <t4 className=" text-[22px] font-bold">Total:</t4>
-            <t4 className=" text-[22px] font-bold">${total}</t4>
+            <h4 className=" text-[22px] font-bold">Total:</h4>
+            <h4 className=" text-[22px] font-bold">${total}</h4>
           </div>
           <div className="    flex justify-end items-start  w-[350px] px-2 ">
             <p className=" text-[12px] text-end text-red-500 ">
