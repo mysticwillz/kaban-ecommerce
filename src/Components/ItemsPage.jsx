@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { TbBuildingStore } from "react-icons/tb";
 import { FaTwitter, FaWhatsapp, FaFacebook } from "react-icons/fa";
@@ -16,6 +16,7 @@ import { cartActions } from "../Store/CartSlice";
 import YouMayLike from "./Items/YouMayLike";
 import Description from "./Items/Description";
 import ImageSection from "./Items/ImageSection";
+import { FetchContext } from "../Context/FetchContext";
 
 function ItemsPage() {
   const [showNum, setShowNum] = useState(false);
@@ -24,6 +25,10 @@ function ItemsPage() {
   const id = useParams().id;
   const cartList = useSelector((state) => state.cart.itemsList);
   const itemArray = cartList.find((item) => item.id === id);
+  const listings = useContext(FetchContext);
+
+  const itemList = listings.find((item) => item.id === id);
+
   const youMayLike = cartList
     .filter((item) => item.id !== id)
     .filter((item) => item.category === itemArray.category);
@@ -91,7 +96,9 @@ function ItemsPage() {
             }}
             className=" text-[18px] font-bold cursor-pointer border-b pb-6 "
           >
-            {showNum ? `${itemArray.price}` : "Click here to show phone number"}
+            {showNum
+              ? `${itemList.data.tel}`
+              : "Click here to show phone number"}
           </p>
           <button className="text-[18px] rounded my-6 border border-[#1e6091] bg-[#1e6091] text-white hover:bg-[#fff] hover:text-[#1e6091] transition-all duration-300 ease-in flex justify-center items-center h-[40px] w-full">
             Purchase Now
@@ -109,7 +116,7 @@ function ItemsPage() {
           <p className="text-[12px] mb-4  text-[#1f2d38]">
             sold by
             <span className="text-[12px] ml-1 text-red-500 pb-1 border-b-[2px] border-solid border-red-500  ">
-              Willz Wonderland
+              {itemList.data.storeName}
             </span>
           </p>
           <p className=" text-[12px] ">Share With Friends</p>
@@ -128,8 +135,8 @@ function ItemsPage() {
         </article>
       </section>
 
-      <YouMayLike youMayLike={youMayLike} />
       <Description description={itemArray.para} />
+      <YouMayLike youMayLike={youMayLike} storeName={itemList.data.storeName} />
     </main>
   );
 }

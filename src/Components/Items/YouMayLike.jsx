@@ -1,6 +1,7 @@
 import React from "react";
+import { Split } from "../../Molecules/splitterFunction";
 
-function YouMayLike({ youMayLike }) {
+function YouMayLike({ youMayLike, storeName }) {
   return (
     <>
       {youMayLike.length > 0 && (
@@ -19,7 +20,7 @@ function YouMayLike({ youMayLike }) {
               <div className="flex  justify-center items-center w-full h-[170px]   mb-2 ">
                 <img src={img} alt="product " className=" w-full h-full" />
               </div>
-              <h5 className="capitalize mb-2  text-[#1f2d38]">{name}</h5>
+              <h5 className="capitalize mb-2  text-[#1f2d38]">{Split(name)}</h5>
               <div className="flex  justify-between items-center w-full  mb-2  ">
                 <h2 className=" text-[20px] font-bold text-[#1f2d38]">
                   $ {price}
@@ -31,7 +32,7 @@ function YouMayLike({ youMayLike }) {
               <p className="text-[12px] mb-2  text-[#1f2d38]">
                 sold by
                 <span className="text-[12px] ml-1 text-[#1e6091] ">
-                  Willz Wonderland
+                  {storeName}
                 </span>
               </p>
               <button className="text-[18px] rounded border border-[#1e6091] text-[#1e6091] hover:text-white hover:bg-[#1e6091] transition-all duration-300 ease-in flex justify-center items-center h-[40px] w-full">
