@@ -60,7 +60,7 @@ function CategoryListing({ listings }) {
               onClick={(e) => {
                 handleNavigate(e, name, price, id, img, para);
               }}
-              className="flex flex-col   w-[250px] h-[350px] mb-2 mx-2 lg:mx-0 border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  "
+              className="flex flex-col  w-full  md:w-[250px] h-[350px] mb-2 mx-2 lg:mx-0 border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  "
             >
               <div className="flex  justify-center items-center w-full h-[170px]   mb-2 ">
                 <img src={img[0]} alt="product " className=" w-full h-full" />

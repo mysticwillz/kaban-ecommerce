@@ -15,6 +15,7 @@ function Sidebar({ setShowMenu, showMenu }) {
       signOut(auth);
 
       navigate("/");
+      setShowMenu(false);
     } catch (error) {
       toast.error("could not log out");
     }
@@ -40,6 +41,7 @@ function Sidebar({ setShowMenu, showMenu }) {
           <div
             onClick={() => {
               navigate("/profile");
+              setShowMenu(false);
             }}
             className=" flex items-center mb-4 text-[#1e6091] transition duration-250 ease-in  "
           >
@@ -56,6 +58,7 @@ function Sidebar({ setShowMenu, showMenu }) {
             <button
               onClick={() => {
                 navigate("/login");
+                setShowMenu(false);
               }}
               className="w-[85px] h-[40px] text-center font-bold py-1 flex items-center justify-center hover:bg-[#1f2d38] transition duration-250 ease-in-out   capitalize   bg-[#1e6091] rounded-sm text-white"
             >
@@ -65,6 +68,7 @@ function Sidebar({ setShowMenu, showMenu }) {
           <div
             onClick={() => {
               navigate("/profile");
+              setShowMenu(false);
             }}
             className=" flex items-center my-2  hover:text-[#1e6091] transition duration-250 ease-in cursor-pointer "
           >
@@ -78,6 +82,7 @@ function Sidebar({ setShowMenu, showMenu }) {
             <div
               onClick={() => {
                 navigate("/create-listing");
+                setShowMenu(false);
               }}
               className=" flex items-center my-2  hover:text-[#1e6091] transition duration-250 ease-in cursor-pointer "
             >
@@ -98,6 +103,7 @@ function Sidebar({ setShowMenu, showMenu }) {
                   key={id}
                   onClick={() => {
                     navigate(`/category/${category}`);
+                    setShowMenu(false);
                   }}
                   className=" flex items-center my-2  hover:text-[#1e6091] transition duration-250 ease-in cursor-pointer "
                 >

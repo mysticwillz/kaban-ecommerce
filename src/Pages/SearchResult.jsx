@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import EmptySearch from "../Components/EmptySearch";
 import { FetchContext } from "../Context/FetchContext";
 import { Split } from "../Molecules/splitterFunction";
 import { cartActions } from "../Store/CartSlice";
@@ -47,7 +48,9 @@ function SearchResult() {
     );
   };
 
-  return (
+  return searchListings.length === 0 ? (
+    <EmptySearch />
+  ) : (
     <>
       <main className="  flex items-center  justify-center md:justify-between mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
         {searchListings?.map((product) => {
