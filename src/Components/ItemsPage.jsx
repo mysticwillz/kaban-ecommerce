@@ -26,6 +26,7 @@ function ItemsPage() {
   const cartList = useSelector((state) => state.cart.itemsList);
   const itemArray = cartList.find((item) => item.id === id);
   const listings = useContext(FetchContext);
+  console.log(cartList);
 
   const itemList = listings.find((item) => item.id === id);
 
@@ -64,7 +65,7 @@ function ItemsPage() {
           <h2 className="text-[38px] font-bold py-6 ">{itemArray.name}</h2>
 
           <div className="flex items-center  text-[18px] border-y w-full py-6 ">
-            <h5 className=" text-[32px] ">${itemArray.totalPrice}</h5>
+            <h5 className=" text-[32px] ">${parseInt(itemArray.totalPrice)}</h5>
             <strike className="text-[22px] text-[#767879db] pl-6">
               ${Math.round((itemArray.totalPrice / 5) * 6)}
             </strike>

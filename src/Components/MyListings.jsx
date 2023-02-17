@@ -52,7 +52,7 @@ function MyListings() {
             } = product;
 
             return (
-              <section className="flex flex-col   w-[250px] h-[300px] mb-2 mx-1  border hover:shadow rounded  bg-white px-4 py-2 cursor-pointer  ">
+              <section className="flex flex-col  w-full  md:w-[250px] h-[350px] mb-2 mx-2 lg:mx-0 border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  ">
                 <div
                   key={id}
                   className="flex  justify-center items-center w-full h-[160px]   mb-2 "

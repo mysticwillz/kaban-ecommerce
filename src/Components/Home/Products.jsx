@@ -42,8 +42,10 @@ function Products({ listings }) {
         {listings?.map((product) => {
           const {
             id,
-            data: { imgUrls: img, price, name, storeName, para },
+            data: { imgUrls: img, price: itemPrice, name, storeName, para },
           } = product;
+
+          const price = parseInt(itemPrice);
           return (
             <section
               key={id}

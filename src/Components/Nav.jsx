@@ -31,11 +31,16 @@ function Nav() {
       ),
     [authRefresh]
   );
-
-  const handleChange = (e) => setSearch(e.target.value);
-  const handleSubmit = (e) => e.preventDefault();
-
   const navigate = useNavigate();
+  const handleChange = (e) => setSearch(e.target.value);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (search.length === 0) {
+      return;
+    } else {
+      navigate(`/search/${search}`);
+    }
+  };
 
   const quantity = useSelector((state) => state.cart.totalQuantity);
 

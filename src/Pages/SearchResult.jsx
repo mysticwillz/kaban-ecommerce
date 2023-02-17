@@ -1,19 +1,25 @@
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useContext } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import EmptySearch from "../Components/EmptySearch";
+import { FetchContext } from "../Context/FetchContext";
+import { Split } from "../Molecules/splitterFunction";
+import { cartActions } from "../Store/CartSlice";
 
-import { cartActions } from "../../Store/CartSlice";
-import { Split } from "../../Molecules/splitterFunction";
-
-function CategoryListing({ listings }) {
+function SearchResult() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const listings = useContext(FetchContext);
+  const search = useParams().search;
 
-  const category = useParams().category;
-
-  const categoryList = listings.filter((list) => {
-    return list.data.category === category.trim().toLowerCase();
+  const searchListings = listings.filter((list) => {
+    if (
+      list.data.name.toLowerCase().includes(search.toLowerCase()) ||
+      list.data.category.toLowerCase().includes(search.toLowerCase())
+    ) {
+      return list;
+    }
   });
-
   const handleNavigate = (e, name, price, id, img, para) => {
     if (e.target.type === "button") {
       return;
@@ -42,13 +48,12 @@ function CategoryListing({ listings }) {
     );
   };
 
-  return (
+  return searchListings.length === 0 ? (
+    <EmptySearch />
+  ) : (
     <>
-      <h1 className="font-bold text-[32px] text-center uppercase ">
-        {category}
-      </h1>
       <main className="  flex items-center  justify-center md:justify-between mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
-        {categoryList?.map((product) => {
+        {searchListings?.map((product) => {
           const {
             id,
             data: { imgUrls: img, price: itemPrice, name, storeName, para },
@@ -97,4 +102,4 @@ function CategoryListing({ listings }) {
   );
 }
 
-export default CategoryListing;
+export default SearchResult;
