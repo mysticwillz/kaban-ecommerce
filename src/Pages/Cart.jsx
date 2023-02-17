@@ -64,6 +64,7 @@ function Cart() {
               deleteFromCart={deleteFromCart}
               addToCart={addToCart}
               removeFromCart={removeFromCart}
+              listings={listings}
             />
           );
         })}

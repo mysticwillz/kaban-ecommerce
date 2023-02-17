@@ -19,6 +19,7 @@ import React, { useState, useEffect } from "react";
 
 import { db } from "./Components/Firebase";
 import { getDocs, orderBy, query, collection } from "firebase/firestore";
+import SearchResult from "./Pages/SearchResult";
 
 function App() {
   const [listings, setListings] = useState([]);
@@ -53,7 +54,8 @@ function App() {
       <FetchContext.Provider value={listings}>
         <Nav />
         <Routes>
-          <Route path="/" element={<Home listings={listings} />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/search/:search" element={<SearchResult />} />
           <Route path="/profile" element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
           </Route>

@@ -10,7 +10,9 @@ function CartTableMobile({
   quantity,
   totalPrice,
   deleteFromCart,
+  listings,
 }) {
+  const storeName = listings.find((item) => item.id === id).data.storeName;
   return (
     <section className=" md:hidden border-b">
       <div className="flex items-center mb-[10px]">
@@ -22,7 +24,7 @@ function CartTableMobile({
           <p className="text-[12px] mb-2  text-[#1f2d38]">
             sold by
             <span className="text-[12px] ml-1 text-[#1e6091] ">
-              Willz Wonderland
+              {storeName}
             </span>
           </p>
         </div>
