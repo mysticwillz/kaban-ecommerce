@@ -39,6 +39,7 @@ function Nav() {
       return;
     } else {
       navigate(`/search/${search}`);
+      setSearch("")
     }
   };
 

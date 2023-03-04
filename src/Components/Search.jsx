@@ -38,7 +38,7 @@ export const SearchMobile = function ({ handleSubmit, handleChange, search }) {
           value={search}
           id="search"
           placeholder="Search for products"
-          className=" rounded-l-full  text-sm border border-[#5b7e99] w-full  h-[40px]  "
+          className=" rounded-l-full  text-sm  border border-[#5b7e99] w-full  h-[40px] focus:border-[#1e6091]  "
         />
         <button className="rounded-r-full    border-[#1e6091] bg-[#1e6091] w-[70px] h-[40px] flex items-center justify-center  transition duration-150 ease-in-out ">
           <AiOutlineSearch className=" text-[1.3rem] font-bold  text-white " />
