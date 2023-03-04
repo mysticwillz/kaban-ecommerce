@@ -101,7 +101,12 @@ function ItemsPage() {
               ? `${itemList.data.tel}`
               : "Click here to show phone number"}
           </p>
-          <button className="text-[18px] rounded my-6 border border-[#1e6091] bg-[#1e6091] text-white hover:bg-[#fff] hover:text-[#1e6091] transition-all duration-300 ease-in flex justify-center items-center h-[40px] w-full">
+          <button
+            onClick={() => {
+              navigate("/cart");
+            }}
+            className="text-[18px] rounded my-6 border border-[#1e6091] bg-[#1e6091] text-white hover:bg-[#fff] hover:text-[#1e6091] transition-all duration-300 ease-in flex justify-center items-center h-[40px] w-full"
+          >
             Purchase Now
           </button>
           <div className="flex items-center ">

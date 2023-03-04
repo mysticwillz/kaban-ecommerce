@@ -1,55 +1,40 @@
 import React from "react";
 
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
-import { toast } from "react-toastify";
-
-import { useNavigate } from "react-router-dom";
-import { BsFillArrowLeftCircleFill } from "react-icons/bs";
-import Order from "../Components/checkout/Order";
+import { handlePayment } from "../PaymentUsingComponents";
 
 function Checkout() {
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
-  const [listData, setListData] = useState({
-    name: "",
+  const cartList = useSelector((state) => state.cart.itemsList);
 
-    img: {},
-    price: "",
-    para: "",
-    tel: "",
-    storeName: "",
-    category: "",
+  const amount = cartList
+    .map((cart) => {
+      const { totalPrice } = cart;
+      return totalPrice;
+    })
+    .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
+  const [listData, setListData] = useState({
+    email: "",
+
+    address: "",
   });
-  const { name, img, price, para, category, tel, storeName } = listData;
+  const { email, address } = listData;
 
   const handleChange = (e) => {
-    if (e.target.files) {
-      setListData((prev) => ({
-        ...prev,
-        img: e.target.files,
-      }));
-    }
-    if (!e.target.files) {
-      setListData((prev) => ({
-        ...prev,
-        [e.target.id]: e.target.value,
-      }));
-    }
+    setListData((prev) => ({
+      ...prev,
+      [e.target.id]: e.target.value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    setLoading(true);
-    if (category === "") {
-      setLoading(false);
-      toast.error("please select category");
-      return;
-    }
+    handlePayment(email, amount);
   };
   return (
-    <main className=" max-w-7xl px-3 md:px-0 ">
+    <main className=" max-w-7xl px-3 md:px-0 h-screen ">
       <section className="flex items-center justify-center max-w-2xl my-9 mx-auto bg-[#6c757d] rounded ">
         <main className="max-w-[30rem] mx-auto mt-[10px]">
           <header className="flex items-center justify-center my-[10px] text-white">
@@ -64,75 +49,43 @@ function Checkout() {
                 <input
                   type="text"
                   required
-                  id="name"
+                  id="address"
                   onChange={handleChange}
-                  value={name}
+                  value={address}
                   placeholder="Enter delivery address"
                   className="w-full rounded border-0 focus:border-[#1e6091] text-[20px] font-bold  letter-spacing  "
                 />
               </div>
             </div>
+
             <div className="w-full mt-[10px]   flex  flex-wrap md:flex-nowrap justify-between items-center  px-4 ">
               <div className="flex flex-col  w-full  items-start  r">
                 <label htmlFor="name" className="font-bold pr-2 ">
-                  CardHolder's Name:
+                  Email:
                 </label>
                 <input
                   type="text"
                   required
-                  id="name"
+                  id="email"
                   onChange={handleChange}
-                  value={name}
-                  placeholder="Name on card"
-                  className="w-full rounded border-0 focus:border-[#1e6091] text-[20px] font-bold  letter-spacing  "
-                />
-              </div>
-            </div>
-            <div className="w-full mt-[10px]   flex  flex-wrap md:flex-nowrap justify-between items-center  px-4 ">
-              <div className="flex flex-col  w-full  items-start  r">
-                <label htmlFor="name" className="font-bold pr-2 ">
-                  Card Number:
-                </label>
-                <input
-                  type="text"
-                  required
-                  id="name"
-                  onChange={handleChange}
-                  value={name}
-                  placeholder="Enter card number"
+                  value={email}
+                  placeholder="name@email.com"
                   className="w-full rounded border-0 focus:border-[#1e6091] text-[20px] font-bold  letter-spacing "
                 />
               </div>
             </div>
-
-            <div className="w-full   flex  md:flex-nowrap justify-between items-center mt-[10px]  px-4 ">
-              <div className="flex flex-col  items-start w-[49%] ">
+            <div className="w-full mt-[10px]   flex  flex-wrap md:flex-nowrap justify-between items-center  px-4 ">
+              <div className="flex flex-col  w-full  items-start  r">
                 <label htmlFor="name" className="font-bold pr-2 ">
-                  Expiry Date:
+                  Amount:
                 </label>
                 <input
                   type="text"
                   required
-                  id="storeName"
-                  onChange={handleChange}
-                  value={storeName}
-                  placeholder="MM/YY"
-                  className="w-full rounded border-0 focus:border-[#1e6091] text-[20px] font-bold  letter-spacing  "
-                />
-              </div>
-              <div className="flex flex-col  items-start  w-[49%]  ">
-                <label htmlFor="price" className="font-bold pr-2 ">
-                  CVV:
-                </label>
-                <input
-                  type="number"
-                  id="tel"
-                  required
-                  min="0"
-                  onChange={handleChange}
-                  value={tel}
-                  placeholder="Code"
-                  className="w-full rounded border-0 focus:border-[#1e6091] text-[20px] font-bold  letter-spacing  "
+                  id="amount"
+                  value={amount}
+                  placeholder="Enter amount"
+                  className="w-full rounded border-0 focus:border-[#1e6091] text-[20px] font-bold  letter-spacing "
                 />
               </div>
             </div>

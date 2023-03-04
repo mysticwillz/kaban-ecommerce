@@ -52,7 +52,7 @@ function SearchResult() {
     <EmptySearch />
   ) : (
     <>
-      <main className="  flex items-center  justify-center md:justify-between mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px]">
+      <main className="  flex items-center  justify-center md:justify-between mx-auto   w-full max-w-7xl flex-wrap p-0  mt-[10px] overflow-x-hidden">
         {searchListings?.map((product) => {
           const {
             id,
