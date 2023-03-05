@@ -15,7 +15,7 @@ export default function ProductMobile({
       onClick={(e) => {
         handleNavigate(e, name, price, id, img, para);
       }}
-      className="flex flex-col w-[112px] h-[200px] mb-2 mx-2 md:hidden border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer "
+      className="flex flex-col w-[44%] sm:w-[30%] h-[240px] mb-2 mx-2 md:hidden border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer "
     >
       <div className="flex  justify-center items-center w-full h-[137px]   mb-2 ">
         <img src={img[0]} alt="product " className=" w-full h-full" />
