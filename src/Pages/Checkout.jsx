@@ -34,7 +34,7 @@ function Checkout() {
     handlePayment(email, amount);
   };
   return (
-    <main className=" max-w-7xl px-3 md:px-0 h-screen ">
+    <main className=" max-w-7xl px-3 md:px-0 md text-white:h-screen ">
       <section className="flex items-center justify-center max-w-2xl my-9 mx-auto bg-[#6c757d] rounded ">
         <main className="max-w-[30rem] mx-auto mt-[10px]">
           <header className="flex items-center justify-center my-[10px] text-white">
@@ -43,7 +43,7 @@ function Checkout() {
           <form onSubmit={handleSubmit} className="flex flex-col mt-3  w-full">
             <div className="w-full   flex  flex-wrap md:flex-nowrap justify-between items-center  px-4 ">
               <div className="flex flex-col  w-full  items-start  r">
-                <label htmlFor="name" className="font-bold pr-2 ">
+                <label htmlFor="name" className="font-bold pr-2 text-white ">
                   Delivery Address:
                 </label>
                 <input
@@ -60,7 +60,7 @@ function Checkout() {
 
             <div className="w-full mt-[10px]   flex  flex-wrap md:flex-nowrap justify-between items-center  px-4 ">
               <div className="flex flex-col  w-full  items-start  r">
-                <label htmlFor="name" className="font-bold pr-2 ">
+                <label htmlFor="name" className="font-bold pr-2  text-white">
                   Email:
                 </label>
                 <input
@@ -76,7 +76,7 @@ function Checkout() {
             </div>
             <div className="w-full mt-[10px]   flex  flex-wrap md:flex-nowrap justify-between items-center  px-4 ">
               <div className="flex flex-col  w-full  items-start  r">
-                <label htmlFor="name" className="font-bold pr-2 ">
+                <label htmlFor="name" className="font-bold pr-2 text-white">
                   Amount:
                 </label>
                 <input

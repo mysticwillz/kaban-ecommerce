@@ -52,29 +52,59 @@ function MyListings() {
             } = product;
 
             return (
-              <section className="flex flex-col  w-full  md:w-[250px] h-[350px] mb-2 mx-2 lg:mx-0 border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  ">
-                <div
+              <>
+                {" "}
+                <section
                   key={id}
-                  className="flex  justify-center items-center w-full h-[160px]   mb-2 "
+                  className="flex flex-col w-[44%] sm:w-[30%] h-[240px] mb-2 mx-2 md:hidden border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer "
                 >
-                  <img src={imgUrls[0]} alt="item" className="w-full h-full " />
-                </div>
-                <h5 className="capitalize mb-2  text-[#1f2d38]">
-                  {" "}
-                  {Split(name)}
-                </h5>
-                <div className="flex  justify-between items-start w-full  mb-2  ">
-                  <h2 className=" text-[20px] font-bold text-[#1f2d38]">
-                    $ {price}
-                  </h2>
-                </div>
-                <p className="text-[12px] mb-2 flex items-center justify-between  text-[#1f2d38]">
-                  sold by
-                  <span className="text-[12px] ml-1 text-[#1e6091] ">
-                    {storeName}
-                  </span>
-                </p>
-              </section>
+                  <div className="flex  justify-center items-center w-full h-[137px]   mb-2 ">
+                    <img
+                      src={imgUrls[0]}
+                      alt="product "
+                      className=" w-full h-full"
+                    />
+                  </div>
+                  <h5 className="capitalize mb-1 text-[12px]  text-[#1f2d38]">
+                    {Split(name)}
+                  </h5>
+                  <div className="flex  justify-between items-center w-full  mb-2  ">
+                    <h2 className=" text-[12px] font-bold text-[#1f2d38]">
+                      $ {price}
+                    </h2>
+                    <strike className="text-[10px] text-[#767879db]">
+                      $ {price / 5}
+                    </strike>
+                  </div>
+                </section>
+                <section className=" hidden md:flex flex-col  w-full  md:w-[250px] h-[350px] mb-2 mx-2 border hover:shadow rounded  bg-white px-4 py-4 cursor-pointer  ">
+                  <div
+                    key={id}
+                    className="flex  justify-center items-center w-full h-[160px]   mb-2 "
+                  >
+                    <img
+                      src={imgUrls[0]}
+                      alt="item"
+                      className="w-full h-full "
+                    />
+                  </div>
+                  <h5 className="capitalize mb-2  text-[#1f2d38]">
+                    {" "}
+                    {Split(name)}
+                  </h5>
+                  <div className="flex  justify-between items-start w-full  mb-2  ">
+                    <h2 className=" text-[20px] font-bold text-[#1f2d38]">
+                      $ {price}
+                    </h2>
+                  </div>
+                  <p className="text-[12px] mb-2 flex items-center justify-between  text-[#1f2d38]">
+                    sold by
+                    <span className="text-[12px] ml-1 text-[#1e6091] ">
+                      {storeName}
+                    </span>
+                  </p>
+                </section>
+              </>
             );
           })}
         </main>
