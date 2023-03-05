@@ -23,7 +23,7 @@ import SearchResult from "./Pages/SearchResult";
 
 function App() {
   const [listings, setListings] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchUserListing = async () => {
       const listingRef = collection(db, "listings");
@@ -45,6 +45,7 @@ function App() {
       });
 
       setListings(myListingsArray);
+      setLoading(false);
     };
     fetchUserListing();
   }, []);
@@ -54,7 +55,7 @@ function App() {
       <FetchContext.Provider value={listings}>
         <Nav />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home loading={loading} />} />
           <Route path="/search/:search" element={<SearchResult />} />
           <Route path="/profile" element={<PrivateRoute />}>
             <Route path="/profile" element={<Profile />} />
@@ -66,9 +67,7 @@ function App() {
             <Route path="/create-listing" element={<CreateListing />} />
           </Route>
 
-          <Route path="/category" element={<PrivateRoute />}>
-            <Route path="/category/:category" element={<Category />} />
-          </Route>
+          <Route path="/category/:category" element={<Category />} />
 
           <Route path="/login" element={<Login />} />
           <Route path="/item/:id" element={<ItemsPage />} />

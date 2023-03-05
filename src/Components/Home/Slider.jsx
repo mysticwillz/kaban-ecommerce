@@ -38,7 +38,7 @@ function Slider() {
 
   return (
     <>
-      <div className=" w-[100%] md:w-[70%] lg:w-[60%] md:h-[60vh] h-[30vh] rounded-lg flex items-center justify-center overflow-hidden ">
+      <div className=" mt-2  w-[100%] md:w-[70%] lg:w-[60%] md:h-[60vh] h-[30vh] rounded-lg flex items-center justify-center overflow-hidden ">
         <img
           src={images[currentIndex].img}
           alt={images[currentIndex].alt}
