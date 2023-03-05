@@ -20,6 +20,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "./Components/Firebase";
 import { getDocs, orderBy, query, collection } from "firebase/firestore";
 import SearchResult from "./Pages/SearchResult";
+import ScrollToTop from "./Molecules/ScrollToTop";
 
 function App() {
   const [listings, setListings] = useState([]);
@@ -53,6 +54,7 @@ function App() {
   return (
     <>
       <FetchContext.Provider value={listings}>
+        <ScrollToTop />
         <Nav />
         <Routes>
           <Route path="/" element={<Home loading={loading} />} />
